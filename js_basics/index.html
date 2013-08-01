@@ -19,6 +19,9 @@
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+		<style type="text/css">
+			h2 {text-transform: none !important}
+		</style>
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -587,6 +590,179 @@ function f2c(x) {
 }
 				</code></pre>
 				<br>
+				</section>
+				<section>
+				<h2>Exceptions</h2>
+				<pre><code class="javascript" style="max-height: none" 
+>var myMegaObject = {};
+
+(function() {
+	try {
+		myMegaObject.a.b;
+	} catch(e) {
+		console.log(e);
+	} finally {
+		console.log('I\'m executed anyway');
+	}
+})()
+
+//"TypeError {}"
+//"I'm executed anyway"
+
+function dummyFuncJustForFun(flag){
+	if (!flag)
+		throw new Error('I need a flaaaaag');
+	console.log('Executing is finished');
+}
+
+dummyFuncJustForFun(); // Error: I need a flaaaaag
+				</code></pre>
+				<br>
+				</section>
+				<section>
+				<h2 style="text-align: center;">Functions</h2>
+				<pre><code class="javascript" style="max-height: none"
+>createObject(); // Object
+function createObject() {
+	return {};
+}
+
+func(); // TypeError: undefined is not a function
+func2(); // ReferenceError: func2 is not defined
+var func = function() { return 123;  },
+    b = func;
+console.log(func) // Object
+b(); // 123
+function(){}(); // SyntaxError: Unexpected token (
+function a(){}(); // SyntaxError: Unexpected token )
++function(){}(); // NaN
+				</code></pre>
+				<pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none" 
+>var anotherFunc = function(a, b) {
+	var c = 5;
+	console.log(a);
+	console.log(b);
+};
+
+anotherFunc(2);
+// 2
+// undefined
+console.log(c); // ReferenceError: c is not defined
+
+var foo = function bar() {
+    bar(); // works
+}
+bar(); // ReferenceError</code></pre>
+				<br>
+				</section>
+				<section>
+				<h2 style="text-align: center;">arguments</h2>
+				<pre><code class="javascript" style="max-height: none"
+>var argumentsDetector = function() {
+	for (var i=0; i < arguments.length; i++) {
+		console.log('Argument ' + i + ': ' + arguments[i]);
+	}
+};
+
+argumentsDetector('a', 123, {c: 1});
+//Argument 0: a
+//Argument 1: 123
+//Argument 2: [object Object]
+				</code></pre>
+				<pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none" 
+>function a() {
+	console.log(arguments.callee);
+	console.log(arguments.callee.caller);
+}
+
+function b() {
+	a();	
+}
+
+//Reference to a
+//Reference to b</code></pre>
+				<br>
+				</section>
+				<section>
+					<h2>constructor</h2>
+				<pre><code class="javascript" style="max-height: none" 
+>function Foo() {
+    this.bla = 1;
+}
+
+Foo.prototype.test = function() {
+    console.log(this.bla);
+};
+
+var f = new Foo();
+f.test(); // 1
+Foo(); //undefined</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>function Bar() {
+    var obj = {};
+    obj.value = 'blub';
+
+    var private = 2;
+    obj.someMethod = function(value) {
+        this.value = value;
+    }
+    obj.getPrivate = function() {
+        return private;
+    }
+    return obj;
+}
+new Bar();
+Bar();			</code></pre>
+				</section>
+				<section>
+					<h2>this</h2>
+				<pre><code class="javascript" style="max-height: none" 
+> var person = {
+	_name: 'Коля',
+	talk: function() {
+		console.log('My name is ' + this._name);
+	}
+};
+person.talk();// 'My name is Коля'</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+> var Person = function(name){
+		this._name = name;
+		this.talk = function() {
+			console.log('My name is ' + this._name);
+		};
+	},
+	person = new Person('Коля');
+
+person.talk();// 'My name is Коля'</code></pre>
+				<pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
+> var func = person.talk;
+ func(); // 'My name is undefined'</code></pre>
+				</section>
+				<section>
+					<h2>apply and call</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var person = {
+		_name: 'Коля',
+		talk: function() {
+			console.log('My name is ' + this._name);
+		}
+	},
+	showName = function(place, time) {
+		console.log(['Person', this.name, 'came to the', place, 'at', time].join(' '));
+	};
+showName.call(person, 'shop', '10am'); // 'Person Коля came to the shop at 10am'
+showName.apply(person, ['shop', '10am']); // The same
+showName.call(null, 'shop', '10am'); // The same as showName.call(window, 'shop', '10am');</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>function g() {...}
+function f(a, b) {
+  g.apply(this, arguments);
+}				</code></pre>
+				<pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
+>var argumentsDetector = function() {
+	console.log('Arguments: ' + [].slice.call(arguments).join('; ');
+};
+argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
 				</section>
 			</div>
 		</div>
