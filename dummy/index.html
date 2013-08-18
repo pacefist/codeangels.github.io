@@ -45,10 +45,18 @@
 
 						<li>git clone it</li>
 						<li>open folder with slides, copy the Dummy folder</li>
-						<li>fire up <br>	
-							<code>python -m SimpleHTTPServer 8080</code><br> 
-							(read <a href='http://www.linuxjournal.com/content/tech-tip-really-simple-http-server-python'>this</a> for quick tip) or something alike to server local assets</li>
+						<li>fire up server (see next slide)					</li>
 					</ol>
+				</section>
+				<section>
+					<h3>Step 1.5 Firing up server</h3>
+					<h4>To serve your local assets, you can use one of the following commands:</h4>
+					<br>
+					<code>ruby -run -e httpd . -p</code><br>
+					or<br>
+					<code>python -m SimpleHTTPServer 8080</code><br> 
+					or<br>
+					<code>npm install -g node-static && static -p 8080</code>
 				</section>
 				<section>
 					<h3>Step 2. Edit presentation</h3>
