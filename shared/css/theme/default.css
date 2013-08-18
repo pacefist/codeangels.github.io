@@ -144,3 +144,35 @@ body {
 .text-left {
   text-align: left;
 }
+
+.reveal ul.plain-list {
+  list-style-type: none;
+}
+
+.annotated code {
+  width: 49%;
+  float: left;
+}
+
+.annotated .comments {
+  font-size: 80%;
+  width: 49%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+section .inline-code {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  margin: 0 5px;
+  font-size: .55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  box-shadow: 0 0 6px rgba(0,0,0,.3);
+}
+.plain-list.small-list li {
+  margin: 12px 0;
+}
