@@ -38,7 +38,7 @@
 			<div class="slides">
 			    <section>
 			        <h3 style="text-transform: none;">JavaScript creation</h3>
-					<div style="text-align: left; margin-right: 170px; width: 797px; height: 207px;">
+					<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
 						<ul>
 							<li>Netscape, May, 1995 - LiveScript(later is called JavaScript
 								<span style="font-size: 36.018333435058594px;">);</span>
@@ -53,17 +53,17 @@
 						    <li>November, 1996 - EcmaScript;</li>
 						</ul>
 					</div>
-					<div style="text-align: left; position: absolute; width: 150px; height: 220px; z-index: 4; left: 799px; top: 85px; margin: 0px;" class="absolute-element">
+					<div style="position: absolute; width: 150px; height: 220px; z-index: 4; left: 799px; top: 85px; margin: 0px;" class="text-left absolute-element">
 					    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/dmitrytselinko/images/59552/125px-BEich.jpg" style="width: 140.27645327147968px; height: 178.63867664337158px; max-height: none; max-width: none; margin: 0px; padding: 0px;">
-					        <div style="text-align: left;">
+					        <div class="text-left">
 					        <font style="font-size: 24px;">Brendan Eich</font>
 					    </div>
 					</div>
 				</section>
         		<section>
 		            <h2>Language overview</h2>
-					<p style="text-align: left;" class="fragment">The main things, that JavaScript can do:</p>
-					<p style="text-align: left;"></p>
+					<p class="text-left fragment">The main things, that JavaScript can do:</p>
+					<p class="text-left"></p>
 					<ul>
 						<li class="fragment">Work with DOM(create, delete, hide elements);</li>
 						<li class="fragment">Detect user's actions (mouse clicks, cursor's moving, typing, etc...);</li>
@@ -72,7 +72,7 @@
 					<div>
 				        <br>
 				    </div>
-					<div style="text-align: left;" class="fragment">JavaScript cannot do:</div>
+					<div class="text-left fragment">JavaScript cannot do:</div>
 					<div>
 					    <ul>
 							<li class="fragment">Doesn't has direct access to the file system/memory;</li>
@@ -95,7 +95,7 @@
     <param name="squaresize" value="30">
 &lt;/applet>
 					</code></pre>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<div>
 							<br>
 						</div>
@@ -117,15 +117,15 @@
     <param name="autoStart" value="-1">
 &lt;/object>
 					</code></pre>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<font style="font-size: 24px;">where <i>classid</i> - identifier of class of our component;</font>
 					</div>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<font style="font-size: 24px;">
 						    <br>
 						</font>
 					</div>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<font style="font-size: 32px;">Languages: C++, VB, Delphi, C#/VB.NET</font>
 					</div>
 				</section>
@@ -138,7 +138,7 @@
     <embed src="flash.swf" width="300" height="120" play="true" loop="true" quality="high" pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" />
 &lt;/object> 
 					</code></pre>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<div>
 							<br>
 						</div>
@@ -152,7 +152,7 @@
 				</section>
 				<section>
 				    <h2>Dart</h2>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<ul>
 							<li>Classes, interfaces, types;</li>
 							<li>Dart editor for creating, debugging apps;</li>
@@ -169,7 +169,7 @@
 				</section>
 				<section>
 				    <h2 style="text-transform: none;">CoffeeScript and TypeScript</h2>
-					<div style="text-align: left;">Superset of JavaScript that compiles to plain JavaScript.<br></div>
+					<div class="text-left">Superset of JavaScript that compiles to plain JavaScript.<br></div>
 				</section>
 				<section>
 				    <h2>General aspects</h2>
@@ -203,7 +203,7 @@
         }
     }
 })(window)			</code></pre>
-					<div style="text-align: left;" data-fragment-index="0">
+					<div class="text-left" data-fragment-index="0">
 						<font style="font-size: 32px;">How &nbsp;parser looks at it:</font>
 					</div>
 					<pre class="fragment" data-fragment-index="1"><code class="javascript"
@@ -258,12 +258,12 @@ delete obj.name; // Should be TypeError, but cannot reproduce
 
 function f(x, x) { }// is a SyntaxError - duplicate parameters
 				</code></pre>
-				<div style="text-align: left;">&nbsp;*<font style="font-size: 32px;">IE9(and lower)- ignore such directive</font>
+				<div class="text-left">&nbsp;*<font style="font-size: 32px;">IE9(and lower)- ignore such directive</font>
 				</div>
 				</section>
 				<section>
 					<h2>Coding Style</h2>
-					<div style="text-align: left;">
+					<div class="text-left">
 						<ul>
 							<li>Max line length - &lt;= 80 symbols;</li>
 							<li>Use a space between the '+' to&nbsp;improve readability;<br></li>
@@ -318,7 +318,7 @@ init();
 				</section>
 				<section>
 				<h2>Number</h2>
-				<div style="text-align: left;">64-bit format, standart&nbsp;IEEE 754</div>
+				<div class="text-left">64-bit format, standart&nbsp;IEEE 754</div>
 				<pre><code class="javascript"
 >var num = 123,
     alsoANumber = new Number(567);
@@ -336,14 +336,14 @@ init();
  123.45678.toFixed(2) // "123.46"
  0.1 + 0.2 // 0.30000000000000004 
 				</code></pre>
-				<div style="text-align: left;">
+				<div class="text-left">
 				<br>
 				</div>
 				</section>
 				<section>
 				    <h2>Boolean</h2>
-				    <div style="text-align: left;">Everything is true, except:</div>
-				    <div style="text-align: left;">
+				    <div class="text-left">Everything is true, except:</div>
+				    <div class="text-left">
 				        <ul>
 				            <li>0</li>
 				            <li>null</li>
@@ -411,7 +411,7 @@ for(var i = 0, l = list.length; i < l; i++) {
     console.log(list[i]);
 }
 				</code></pre>
-				<div style="text-align: left;" class="fragment" data-fragment-index="2">&nbsp; &nbsp; &nbsp; <font style="font-size: 32px;">
+				<div class="text-left fragment" data-fragment-index="2">&nbsp; &nbsp; &nbsp; <font style="font-size: 32px;">
 				    <b>&nbsp;Don't use for in</b>
 				</font>
 				</div>
