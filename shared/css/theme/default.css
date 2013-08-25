@@ -176,6 +176,7 @@ section .inline-code {
 ul.small-list li, 
 ol.small-list li {
   margin: 12px 0;
+  font-size: 80%;
 }
 table.table, table.table td, table.table th {
   border: 1px solid white;

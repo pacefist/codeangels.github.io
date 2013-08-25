@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Template presentation based on reveal.js intro</title>
+		<title>1. HTML presentation</title>
 
 		<meta name="description" content="A dummy presentation for CodeAngelsJs Course">
 		<meta name="author" content="sudodoki / Hakim El Hattab">
@@ -82,7 +82,7 @@
 							</li>
 						</ul>
 						</div>
-						<a href='my_first_page.html'>watch me in browser</a>	
+						<a href='html/my_first_page.html'>watch me in browser</a>	
 				
 				</section>
 				
@@ -139,7 +139,7 @@
 					<div class="text-left fragment">
 						<pre><code >&lt;!doctype html&gt;
 &lt;title&gt;HTML5 Minimal Markup Example&lt;/title&gt;</code></pre>
-						<a href='minumum_valid_page.html'>watch me in browser</a>	
+						<a href='html/minumum_valid_page.html'>watch me in browser</a>	
 					</div>
 					<img class='fragment' src='img/validation.png' alt='Passed, 3 warnings'/>
 				</section>
@@ -233,7 +233,7 @@
 					<p>
 						You can also change the way relative resolving works by setting href at &ltbase> tag, ie: <span class="inline-code">&ltBASE href="http://www.google.com"></span>
 						This attribute specifies an absolute URI that acts as the base URI for resolving relative URIs.
-						<a href="base_changed.html">See sample.</a>
+						<a href="html/base_changed.html">See sample.</a>
 					</p>
 				</section>
 				<section>
@@ -251,7 +251,7 @@
 				<section>
 					<p class="text-left">2. Refresh page or redirect to another one.</p>
 					<pre><code>&ltmeta http-equiv="refresh" content="5; URL=1.html5/#/20"></code></pre> or <pre><code>&ltmeta http-equiv="location" content="URL=1.html5/#/20"></code></pre>
-					<a href="meta_refresh.html">Check it in browser.</a>
+					<a href="html/meta_refresh.html">Check it in browser.</a>
 					<p class="fragment">
 						This way, the http-equiv attribute can be used to simulate an HTTP response header.
 					</p>
@@ -276,7 +276,7 @@
 				</section>
 				<section>
 					<h1>Why should we set encoding?</h1>
-					<h1><a href="koi8.html">That's why.</a></h1>
+					<h1><a href="html/koi8.html">That's why.</a></h1>
 				</section>
 				<section>
 					<h1>Summing up &lthead></h1>
@@ -353,7 +353,7 @@
 						<li class="fragment"><ins>&ltins>Inserted text&lt/ins></ins></li>
 						<li class="fragment"><sub>&ltsub>subscription text&lt/sub></sub></li>
 						<li class="fragment"><sup>&ltsup>superscripted text&lt/sup></sup> </li>
-						<a class="fragment" href="formatters.html">All that without stylesheets.</a>
+						<a class="fragment" href="html/formatters.html">All that without stylesheets.</a>
 					</ul>
 				</section>
 				<section>
@@ -478,36 +478,180 @@
 </select>
 <textarea name="comment" rows="60" cols="20"></textarea>
 </form></code></pre>
-<div class="comments" style='width: -webkit-calc(20% - 4px); margin:0'>
-	<form action="demo_form.asp" method="post/get">
-<input type="text" name="email" size="40" maxlength="50">
-<input type="password">
-<input type="checkbox" checked="checked">
-<input type="radio" checked="checked">
-<input type="submit" value="Send">
-<input type="reset">
-<input type="hidden">
-<select>
-<option>Apples</option>
-<option selected="selected">Bananas</option>
-<option>Cherries</option>
-</select>
+				<div class="comments" style='width: -webkit-calc(20% - 4px); margin:0'>
+					<form action="demo_form.asp" method="post/get">
+						<input type="text" name="email" size="40" maxlength="50">
+						<input type="password">
+						<input type="checkbox" checked="checked">
+						<input type="radio" checked="checked">
+						<input type="submit" value="Send">
+						<input type="reset">
+						<input type="hidden">
+						<select>
+						<option>Apples</option>
+						<option selected="selected">Bananas</option>
+						<option>Cherries</option>
+						</select>
+						<textarea name="comment" rows="5" cols="5"></textarea>
+					</form>
+				</div><br>
+				<p><a href="http://nativeformelements.com/">Native form elements</a> (
+					<a href="html/native_form_elements.html">offline version</a>)
+				</p>
+				
+				</section>
+				<section>
+					<h3>Bunch of new structural tags from HTML5</h3>
+					<ul class="plain-list small-list">
+					<li><span class="inline-code">&ltarticle></span> - as in clothing article</li> 
+					<li class='fragment'><span class="inline-code">&ltaside></span> - aside from the page content</li> 
+					<li class='fragment'><span class="inline-code">&ltbdi></span> - might be formatted in different direction</li> 
+					<li class='fragment'><span class="inline-code">&ltcommand></span> - command button for user to invoke</li> 	
+					<li class='fragment'><span class="inline-code">&ltdetails></span> - additional details that can be shown/hidden</li>
+					<li class='fragment'><span class="inline-code">&ltdialog></span> - dialog box/window</li>
+					<li class='fragment'><span class="inline-code">&ltfooter></span> - footer for document/section</li>
+					<li class='fragment'><span class="inline-code">&ltheader></span>- header for document/section </li>
+					<li class='fragment'><span class="inline-code">&ltprogress></span> - progress of a task</li>
+					<li class='fragment'><span class="inline-code">&ltruby> - ruby annotation for East Asian typography</span></li>
+					<li class='fragment'><span class="inline-code">&ltsection> - section in document</span></li>
 
-<textarea name="comment" rows="5" cols="5"></textarea>
 
-</form>
+					</ul>
+				</section>
 
-
-</div>
-
-
-
+				<section>
+					<p>
+						Finally, universal block tag: <span class="inline-code">&ltdiv>&lt/div></span> and inline tag <span class="inline-code">&ltspan>&lt/span></span>
+						They provide no usual change by themselves, adding a hook to document.
+					</p>
+				</section>
+				<section>
+					<h2>Why do we have so many tags if we can use those two?</h2>
+					<h2 class="fragment">Firstly, so we can style them accordingly [CSS FTW].</h2>
+					<h2 class="fragment">And secondly...</h2>
 				</section>
 				<section>
 					<h1>It's all about semantics <a href="http://html5doctor.com/lets-talk-about-semantics/">.</a></h1>
 				</section>
 				<section>
 					<a title='click for russian version' href="img/html5doctor_flowchart_ru.png"><img src="img/html5doctor_flowchart_en.png"></a>				
+				</section>
+				<section>
+					<h1>Page layout</h1>
+					<p>
+						Web page layout is very important to make your website look good. It defines structure relative to <span title='you have main content, your navigation, header/footer, etc.'>content </span> and <span title="you wouldn't format your header same way you format main content">styling</span>.
+					</p>
+				</section>
+				<section>
+					<h1><a href="http://ryanfait.com/sticky-footer/">Sticky-footer example</a></h1>
+
+<pre><code>&ltbody>
+<div class="wrapper">
+	<div class="header"></div>
+	Content goes here
+	<div class="push"></div>
+</div>
+<div class="footer"></div>
+&lt/body></code> </pre>
+				</section>
+				<section>
+					<h1><a href="http://getbootstrap.com/2.3.2/getting-started.html#examples">Bootstrap examples</a></h1>
+					<a href="http://getbootstrap.com/2.3.2/examples/starter-template.html">i.e.</a>:
+<pre><code>&ltbody>
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+  	<div class="container">
+    	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">Project name</a>
+        <div class="nav-collapse collapse">
+        	<ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Bootstrap starter template</h1>
+    <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+  </div> <!-- /container -->
+&lt/body></code></pre>
+				</section>
+				<section>
+					<h1>Using tables</h1>
+					<p>At some point, tables were used</p>
+					<p>They provided easy way to position the content, use proportional containers, etc.</p>
+					<a href="http://www.w3schools.com/html/tryit.asp?filename=tryhtml_layout_tables">Sample.</a>
+				</section>
+				<section>
+					<h1>Grids</h1>
+					<p>Table idea succesors</p>
+					<a href="http://getbootstrap.com/2.3.2/scaffolding.html#gridSystem">Bootstrap grid</a><br/>
+					<a href="http://cobyism.com/gridism/">Gridism</a><br/>
+					<a href="http://960.gs/">960 grid system</a><br/>
+					<p>Good thing you can generate your own grid using sass/less loops.</p>
+					<p class="text-left"> Usually code looks something like
+<pre><code>&ltdiv class="row">
+  &ltdiv class="span4">4-section length div&lt/div>
+  &ltdiv class="span8">8-section length div&lt/div>
+&lt/div></code></pre>						
+					</p>
+				</section>
+				<section>
+					<h1>Flexboxes</h1>
+					<a href="http://www.netmagazine.com/files/tutorials/demos/2011/02/the-css3-flexible-box-model-explained/demo/demo.html">Flex box demo</a>
+					<a href="http://www.netmagazine.com/tutorials/css3-flexible-box-model-explained">Read the article</a>
+					<a href="http://coding.smashingmagazine.com/2011/09/19/css3-flexible-box-layout-explained/">Read some more</a>
+					<p>Not much at layouting routine - css handles it for us.</p>
+				</section>
+				<section>
+					<h1>CSS column feature</h1>
+					<a href="http://davidwalsh.name/demo/css-columns.php">css-columns</a>
+					<p>Same as flexboxes.</p>
+				</section>
+				<section>
+					<h1>Mostly fluid layout</h1>
+					As can be found <a href="http://codepen.io/bradfrost/full/Iardn">here</a>.
+<pre><code>
+&ltdiv class="c">
+	&ltdiv class="main">&lt/div>
+	&ltdiv class="width-in-percent float-left">&lt/div>
+	&ltdiv class="width-in-percent float-left">&lt/div>
+&lt/div>
+</code></pre>					
+				</section>
+
+				<section>
+					<h1>Why do people hate IE?</h1>
+					<p class="text-left">
+						Short answer: <a href="http://css-tricks.com/ie-css-bugs-thatll-get-you-every-time/">it's kinda buggy</a>.<br> Also it supports bunch of stuff only Microsoft cares about.
+					</p>
+				</section>
+				<section>
+					<h1>But it used to be like that.</h1>
+					<h2>Sad part is some people still use IE6 and your customer may want to account for them.</h2>
+				</section>
+				<section>
+					<h1>Fixes for html 5 tags</h1>
+					<a href="https://github.com/aFarkas/html5shiv/">HTML5 Shiv</a>
+				</section>
+				<section>
+					<h1>Conditional comments</h1>
+					<h2> for everything else</h2>
+<pre><code><!--[if IE 6]>
+&lth1>Go get a real browser</h1>
+<!-- or -->
+&ltlink rel='stylesheet' href='css/ie6fixes.css'>
+<![endif]-->
+</code></pre>
+<p>You can use equal, less than (lt), less than / equal (lte), greater than (gt), greater than / equal (gte)</p>
+			
 				</section>
 			</div>
 
