@@ -156,9 +156,9 @@ body {
 
 .annotated .comments {
   font-size: 80%;
-  width: 49%;
+  width: -webkit-calc(49% - 40px);
   float: left;
-  margin: 0;
+  margin: 0 0 0 40px;
   padding: 0;
 }
 
@@ -173,6 +173,11 @@ section .inline-code {
   word-wrap: break-word;
   box-shadow: 0 0 6px rgba(0,0,0,.3);
 }
-.plain-list.small-list li {
+ul.small-list li, 
+ol.small-list li {
   margin: 12px 0;
+}
+table.table, table.table td, table.table th {
+  border: 1px solid white;
+  border-collapse:collapse;
 }
