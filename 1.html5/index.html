@@ -653,6 +653,102 @@
 <p>You can use equal, less than (lt), less than / equal (lte), greater than (gt), greater than / equal (gte)</p>
 			
 				</section>
+				<section>
+					<h1>Semantics</h1>
+					<p>Semantics (from Ancient Greek: σημαντικός sēmantikós) is the study of meaning.</p>
+					<p class="text-left fragment">Semantic layout won't make your live easier.</p>
+					<p class="text-left fragment">Tags provides more information about the semantic content of the markup (<span class="inline-code">&ltheader></span> vs <span class="inline-code">&ltdiv class="header"></span>)</p>
+					<p class="text-left fragment">Content itself tells you 'what' it is</p>
+					<p class="text-left fragment">Screen readers can more effectively present the content</p>
+				</section>
+				<section>
+					<h2>Creating semantically right document can be obtained through 3 different levels of commitment:</h2>
+					<ul>
+						<li class="fragment">Using HTML-elements</li>
+						<li class="fragment">Naming elements</li>
+						<li class="fragment">Combination of named elements</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Sample usage</h1>
+<pre class='fragment'><code>Иван Пупкин, pupkin@gmail.com</code></pre>
+<p class="fragment">
+Let's <i>title</i> person and give his e-mail <i>address</i>.
+<pre class="fragment"><code>&lth3>Иван Пупкин&lt/h3>
+&ltaddress>pupkin@gmail.com&lt/address></code></pre>
+</p>
+<p class="fragment">
+In case of styling, name classes accordingly
+<pre class="fragment"><code>&lth3 class='name'>Иван Пупкин&lt/h3>
+&ltaddress class='email'>pupkin@gmail.com&lt/address>
+</code></pre>
+</p>
+<p class="fragment">
+	Let's go even further and use <a href="http://microformats.org/wiki/hcard">hCard microformat</a>.
+<pre class="fragment"><code><div class="vcard">
+    &lth3 class="fn n">
+        &ltspan class="given-name">Иван&lt/span>
+        &ltspan class="family-name">Пупкин&lt/span>
+    &lt/h3>
+    &ltaddress class="email">pupkin@gmail.com&lt/address>
+</div></code></pre>
+</p>
+				</section>
+				<section>
+					<a href="http://pepelsbey.net/pres/push-it/">Additional reading on buttons</a>
+				</section>
+				<section>
+					<h1>Special characters</h1>
+					<p>In case you need special characters, like &yen or &copy, you can either copy-paste them or use entity, that represent them <span class="inline-code">&ampyen</span> and <span class="inline-code">&ampcopy</span>
+					</p>
+					<a href="http://dev.w3.org/html5/html-author/charref">Full reference</a>
+				</section>
+				<section>
+					<h1>XML</h1>
+					<p class="fragment">XML stands for EXtensible Markup Language</p>	
+					<p class="fragment">XML was created for data description</p>
+					<p class="fragment">XML's tags aren't predefined.</p>
+				</section>
+				<section>
+					<h1>XML vs HTML</h1>
+					<p class="text-left">
+						XML isn't there to replace HTML, they pursue different aims: XML's primary is to describe data and tell us <i>what</i> data is, while HTML is aimed at demonstrating data and telling us <i>how</i> data looks.
+					</p>
+				</section>
+				<section>
+					<h1>Sample XML</h1>
+<pre><code>&ltbook>
+	&ltauthor>
+		Philip K. Dick
+	&lt/author>
+	&lttitle>
+		Ubik
+	&lt/title>
+	&ltcontents>
+		&ltchapter1>&lt/chapter1>
+		&ltchapter2>&lt/chapter2>
+		...
+		&ltchapter17>&lt/chapter17>
+	&lt/contents>
+&lt/book></code></pre>					
+				</section>
+				<section>
+					<h1>XSL</h1>
+					<p>Stands for Extensible Stylesheet Language</p>
+					<p class="fragment">Not only sets up styles, but also defines XML transformations</p>
+				</section>
+				<section>
+					<h1>Components</h1>
+					<p class="text-left">
+						In fact, XSL consist of 
+						<ul class="plain-list">
+							<li>XSLT (Extensible Stylesheet Language Transformations),</li>
+							<li>XPath (XML Path Language),</li>
+							<li>XSL-FO (XSL Formatting Objects).</li>
+						</ul>
+					</p>
+				</section>
+				<section></section>
 			</div>
 
 		</div>
