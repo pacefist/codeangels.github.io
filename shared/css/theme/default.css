@@ -194,3 +194,9 @@ table.table, table.table td, table.table th {
 .final:after {
   content: ')';
 }
+
+span.small {
+  display: inline-block;
+  font-size: 0.5em;
+  vertical-align: top;
+}
