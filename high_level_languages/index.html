@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JS: next level</title>
+
+		<meta name="description" content="High Level Javascript languages">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../shared/css/reveal.min.css">
+		<link rel="stylesheet" href="../shared/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="../shared/css/additional.css">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../shared/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>JS: Next Level</h1>
+					<p class="text-left">There're a lot of tools that extend JS possibilities, like libs that modify standard objects, etc. But some people wanted to do something so different, they created their own language, that compiles (or better said <i>transpiles</i>) into javascript.</p>
+				</section>
+				<section>
+					<h2>Why would they do this?</h2>
+					<h2>There're several reasons</h2>
+					<ol>
+						<li class="fragment">To introduce some <abbr title='syntax within a programming language that is designed to make things easier to read or to express' class='dotted'>syntactic sugar</abbr>, like <a href="http://coffeescript.org/">CoffeeScript</a> </li>
+						<li class="fragment">To introduce <abbr class="dotted" title='data types (such as integer, character, hexadecimal, packed decimal, and so forth) is predefined as part of the programming language and all constants or variables defined for a given program must be described with one of the data types'>strong typing</abbr> , like <a href="www.typescriptlang.org/‎">Typescript</a> or <a href="www.dartlang.org/‎">Dart</a></li>
+						<li class="fragment">To write javascript in your favourite language: <a href="opalrb.org/‎">Opal</a> - Ruby, <a href="http://pyjs.org/">Pyjamas</a> - Python, <a href="https://github.com/fglock/Perlito">Perlito</a> - Perl, <a href="https://github.com/kless/go2js">Go2js</a> - Go, and ton of others</li>
+					</ol>
+				</section>
+				<section>
+					<h1>Coffeescript</h1>
+					<p>Check out
+							<a href="http://www.amazon.com/CoffeeScript-Accelerated-Development-Trevor-Burnham/dp/1934356786">CoffeeScript: Accelerated JavaScript Development</a> by Trevor Burnham <br/> or <br/>
+							<a href="http://arcturo.github.io/library/coffeescript/">Little book on CoffeScript</a>						
+					</p>
+				</section>
+				<section>
+					<h1>Main concepts</h1>
+					<ul class="plain-list">
+						<li>Eliminate JS <a href="http://www.oreillynet.com/pub/a/javascript/excerpts/javascript-good-parts/awful-parts.html">awful</a> & <a href="http://oreilly.com/javascript/excerpts/javascript-good-parts/bad-parts.html">bad</a> parts</li>
+						<li class="fragment">Get rid of all <span class="inline-code">{}</span>, <span class="inline-code">[]</span> brackets (mostly) and semicolons </li>
+						<li class="fragment">Introduce some sugar for loops, Classes, etc.</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Some JS code</h2>					
+<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) ) {
+        node.className += ' roll';
+      }
+    };
+  }
+}
+					</code></pre>
+				</section>
+				<section>
+					<h2>Translated to Coffee</h2>
+					<pre><code data-trim contenteditable>
+linkify = (selector) ->
+  if supports3DTransforms
+    nodes = document.querySelectorAll(selector)
+    for node in nodes
+    	className += " roll"  unless node.className
+					</code></pre>
+  			</section>
+  			<section>
+					<h2>How to run program written in coffee?</h2>
+					<ul class="plain-list">
+						<li>via <a href="http://coffeescript.org/">online sandbox</a> </li>
+						<li class="fragment">in your browser <a href="https://chrome.google.com/webstore/detail/coffeeconsole/ladbkfdlnaibelfidknofapbbdlhadfp?hl=en">coffee console</a></li>
+						<li class="fragment">in your REPL console (<a href="https://npmjs.org/package/coffee-script">coffee</a> -i)</li>
+						<li class="fragment">letting serverside handle this (<a href="https://github.com/sstephenson/sprockets">Sprocket</a>, <a href="gruntjs.com">Grunt</a>, <a href="https://npmjs.org/package/coffee-script">coffee</a>)</li>
+						<li class="fragment">using some GUI/browser extension (<a href="http://alphapixels.com/prepros/">Prepros</a>, <a href="http://koala-app.com/">Koala</a>)</li>
+						<li class="fragment">using "text/coffeescript" Script Tags (with this <a href="http://coffeescript.org/extras/coffee-script.js">lib</a></li>
+					</ul>
+  			</section>
+  			<section>
+  				<h1>Syntax</h1>  				
+  			</section>
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/1">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fragmented Views</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<ol>
+							<li class="fragment"><code>any type</code></li>
+							<li class="fragment"><em>of view</em></li>
+							<li class="fragment"><strong>fragments</strong></li>
+						</ol>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's a few styles of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment roll-in">roll-in</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-green">highlight-green</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Spectacular image!</h2>
+					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
+						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
+					</a>
+				</section>
+				<section>
+					<h2>Stellar Links</h2>
+					<ul>
+						<li><a href="http://slid.es">Try the online editor</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
+						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+					</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="../shared/lib/js/head.min.js"></script>
+		<script src="../shared/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

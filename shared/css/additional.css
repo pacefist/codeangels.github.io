@@ -1,0 +1,4 @@
+/* TODO: move some things from default css here */
+abbr.dotted {
+  border-bottom:1px dotted;
+}
