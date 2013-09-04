@@ -241,7 +241,7 @@ var MY_PI = 3.14, // constant, just our agreement
 				<section>
 				<h2>strict mode</h2>
 				<pre><code class="javascript"
->'strict mode';
+>'use strict';
 
 012; // will cause a SyntaxError
 eval('010'); // TypeError
@@ -763,6 +763,109 @@ function f(a, b) {
 	console.log('Arguments: ' + [].slice.call(arguments).join('; ');
 };
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
+				</section>
+				<section>
+					<h2>Closure</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function counterConstructor(arg1, arg2) {
+	var count = 0,
+		myVar = 1,
+		_constr = function inner(){
+			//console.log(myVar);
+			return ++count;
+		};
+	myVar = 2;
+	return _constr;
+};
+
+var counter = counterConstructor();
+counter(); // 1
+counter(); // 2</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>for (var i = 0; i < links.length; i++) {
+   //(function(i){}
+	   links[i].onclick = function() {
+	      console.log(i);
+	   }
+   //)(i)
+}</code></pre>
+				</section>
+				<section>
+					<h2>Namespace</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>(function( window, undefined ) {
+	//  Put your code hre
+})(window);</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>({
+	width: '600px',
+	height: '400px',
+	getParams: function() {
+		retutn {
+			width: this.width,
+			height: this.height
+		};
+	},
+	init: function(){
+		console.log('Initializing....');
+		// more init code
+	}
+}).init();</code></pre>
+				</section>
+				<section>
+					<h2>Etc....</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>//Self-defining functions
+var func = function(){
+	console.log('pre init');
+	func = function(){
+		console.log('init code');
+	};
+};
+func(); // pre init
+func(); // init code</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>//Currying
+function curry(x){
+    return function(y){
+        return x + y;
+    }
+}
+curry(4)(5); // 9</code></pre><pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>//Memoization
+var func = function (param) {
+	func.cache = func.cache || {};
+	if (!func.cache[param]) {
+		var result = {};
+		// ... expensive operation ...
+		func.cache[param] = result;
+	}
+	return func.cache[param];
+};</code></pre>
+				</section>
+				<section>
+					<h2>Timers</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var timerId = setTimeout(function(){
+	alert('Hello');
+}, 1000),
+    timerId2 = setTimeout("alert('Hello')", 1000);
+clearTimeout(timerId);
+clearTimeout(timerId2);</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var timerId = setInterval(function(){
+    console.log('Hello');
+});
+clearInterval(timerId);</code></pre><pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var result;
+
+function showResult() {
+    alert(result);
+}
+
+setTimeout(showResult, 0); // setImmediate(func) as alternative technique
+
+result = 2*2;</code></pre>
 				</section>
 			</div>
 		</div>
