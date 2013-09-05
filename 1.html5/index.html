@@ -205,27 +205,39 @@
 				</section>
 				<section>
 					<h1>URL resolving</h1>
-					<p class='text-left'>For the second part we're using URL - <strong>Uniform Resource Locator</strong>, which is also referenced as 'web address'. By looking at page adress (in adress bar, usually, at the top of your browser window, you can tell the protocol used (http:, https:, ftp:, etc.), the host (google.com), the path (/search/images) and the fragment (#anchor2)</p>
+					<p class='text-left'>For the second part we're using URL - <strong>Uniform Resource Locator</strong>, which is also referenced as 'web address'.
+					<p class='text-left'>By looking at page adress (in adress bar, usually, at the top of your browser window, you can tell</p>
+					<ul class="plain-list">
+						<li>the protocol used (http:, https:, ftp:, etc.),</li>
+						<li>the host (google.com),</li>
+						<li>the path (/search/images)</li>
+						<li>and the fragment (#anchor2)</li>
+					</ul></p>
 				</section>
-				<section class='annotated'>
+				<section>
 					<h1>Let's see some examples:</h1>
-					<ul class='plain-list'>
-						<li class="fragment">
+<pre><code data-trim contenteditable>
+&ltimg src='/relative_to_host_sample_url_image.jpg'/>
+&ltimg src='../shared/current_relative_sample_url_image.jpg'/>
+&ltimg src='current_relative_sample_url_image.jpg'/>
+&ltimg src='https://drive.google.com/uc?export=view&id=0B65dEGRmB3VidlpTaG04b0k0bEE'/>
+</code></pre>
+					<ul class='plain-list comments'>
+						<li>
 							<img alt='set relatively to host' src='/relative_to_host_sample_url_image.jpg'/>
-							<span class='small'>/relative_to_host_sample_url_image.jpg</span>
+							<span class="small">set relatively to host</span>
 						</li>
-						<li class="fragment">
+						<li>
 							<img alt='set relatively to current path, referencing parent directory' src='../shared/current_relative_sample_url_image.jpg'/>
-							<span class='small'>../shared/current_relative_sample_url_image.jpg</span>
+							<span class="small">set relatively to current path, referencing parent directory</span>
 						</li>
-						<li class="fragment">
+						<li>
 							<img alt='set relatively to current path' src='current_relative_sample_url_image.jpg'/>
-						
-							<span class='small'>current_relative_sample_url_image.jpg</span>
+							<span class="small">set relatively to current path</span>
 						</li>
-						<li class="fragment" >
-							<img alt='absolutely set path' src='https://photos-3.dropbox.com/t/0/AAA3Bf78YeDVccOQ7PkKHRD97FY6wiOwC6-dlwSz3xNxVA/12/147944594/jpeg/1024x768/3/1378033200/0/2/absolute.jpg/rRpOdVgJKjK2b5CHJfeB8joqi5o5Q3vgKUM21ucwcuw'/>
-							<span class='small'>some hardcoded https://photos-3.dropbox.com/blah-blah</span>
+						<li>
+							<img alt='absolutely set path' src='https://drive.google.com/uc?export=view&id=0B65dEGRmB3VidlpTaG04b0k0bEE'/>
+							<span class='small'>absolutely set path</span>
 						</li>
 					</ul>					
 				</section>
