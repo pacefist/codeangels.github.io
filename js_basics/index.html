@@ -239,7 +239,7 @@ var MY_PI = 3.14, // constant, just our agreement
 					</code></pre>
 				</section>
 				<section>
-				<h2>strict mode</h2>
+				<h2>Strict mode</h2>
 				<pre><code class="javascript"
 >'use strict';
 
@@ -263,30 +263,8 @@ function f(x, x) { }// is a SyntaxError - duplicate parameters
 				</section>
 				<section>
 					<h2>Coding Style</h2>
-					<div class="text-left">
-						<ul>
-							<li>Max line length - &lt;= 80 symbols;</li>
-							<li>Use a space between the '+' to&nbsp;improve readability;<br></li>
-						</ul>
-						<pre><code
->var string = 'Foo' + bar;
-string = bar + 'foo';
-string = bar() + 'foo';
-						</code></pre>
-						<ul>
-							<li>CamelCasing;</li>
-							<li>Indentation 2|4 spaces;</li>
-							<li>Declaration of functions should be located under the main code;</li>
-						</ul>
-						<p>
-						</p>
-						<pre><code
->function my(){...}
-function hello(){...}
-........
-var myVar, somethingElse;
-init();
-						</code></pre>
+					<div>
+						<img src="img/cheatsheet.png" />
 					</div>
 				</section>
 				<section>
@@ -656,6 +634,32 @@ bar(); // ReferenceError</code></pre>
 				<br>
 				</section>
 				<section>
+					<h2>Closure</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function counterConstructor(arg1, arg2) {
+	var count = 0,
+		myVar = 1,
+		_constr = function inner(){
+			//console.log(myVar);
+			return ++count;
+		};
+	myVar = 2;
+	return _constr;
+};
+
+var counter = counterConstructor();
+counter(); // 1
+counter(); // 2</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>for (var i = 0; i < links.length; i++) {
+   //(function(i){}
+	   links[i].onclick = function() {
+	      console.log(i);
+	   }
+   //)(i)
+}</code></pre>
+				</section>
+				<section>
 				<h2 style="text-align: center;">arguments</h2>
 				<pre><code class="javascript" style="max-height: none"
 >var argumentsDetector = function() {
@@ -684,12 +688,51 @@ function b() {
 				<br>
 				</section>
 				<section>
-					<h2>constructor</h2>
+				<h2 style="text-align: center;">Continue with objects</h2>
+				<pre><code class="javascript" style="max-height: none"
+>var alien = {kind: 'alien'},
+    person = {kind: 'person'},
+    zack = {};
+
+zack.__proto__ = alien; // assign alien as the prototype of zack
+console.log(zack.kind); //=> 'alien'
+
+console.log(alien.isPrototypeOf(zack)); //=> true
+
+zack.__proto__ = person;
+console.log(zack.kind); //=> 'person'
+
+zack.kind = 'zack';
+console.log(zack.kind); //=> 'zack'
+console.log(person.kind); //=> 'person'
+</code></pre>
+<pre class="fragment" data-fragment-index="0">
+	<img src="img/prototype_object_chain.png" style="background-color: white" />
+</pre>
+				<br>
+				</section>
+				<section>
+					<h2>Object.create</h2>
+					<div class="text-left"><i>__proto__</i> is not a well supported way of assigning prototypes to objects.
+<i>Object.create</i> is available in ES5, but old browsers / engines can be shimmed using this <a href="https://github.com/kriskowal/es5-shim">es5-shim</a>.
+					</div>
+					<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var person = {
+  kind: 'person'
+}
+
+var zack = Object.create(person, {age: {value:  13} });
+console.log(zack.age); // => '13'  
+console.log(zack.kind); // => 'person'	
+Object.getPrototypeOf(zack); // => 'person'		
+</code></pre>
+				</section>
+				<section>
+					<h2>Constructors</h2>
 				<pre><code class="javascript" style="max-height: none" 
 >function Foo() {
     this.bla = 1;
 }
-
 Foo.prototype.test = function() {
     console.log(this.bla);
 };
@@ -698,6 +741,25 @@ var f = new Foo();
 f.test(); // 1
 Foo(); //undefined</code></pre>
 				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>// constructor
+var Gadget = function () {};
+// a static method
+Gadget.isShiny = function () {
+    return "you bet";
+};
+// a normal method added to the prototype
+Gadget.prototype.setPrice = function (price) {
+    this.price = price;
+};
+
+// calling a static method
+Gadget.isShiny(); // "you bet"
+// creating an instance and calling a method
+var iphone = new Gadget();
+iphone.setPrice(500);
+
+
+
 >function Bar() {
     var obj = {};
     obj.value = 'blub';
@@ -713,6 +775,34 @@ Foo(); //undefined</code></pre>
 }
 new Bar();
 Bar();			</code></pre>
+				</section>
+				<section>
+					<h2>Factory constructor pattern</h2>
+				<pre><code class="javascript" style="max-height: none"
+>function Bar() {
+    var obj = {};
+    obj.value = 'blub';
+
+    var private = 2;
+    obj.someMethod = function(value) {
+        this.value = value;
+    }
+    obj.getPrivate = function() {
+        return private;
+    }
+    return obj;
+}
+Bar();			</code></pre>
+				</section>
+				<section>
+					<h2>Prototype chain</h2>
+					<pre><code class="javascript" style="max-height: none"
+>if (typeof Array.prototype.myMethod === 'undefined') {
+    Array.prototype.myMethod = function(){
+        // put your code here
+    };
+}</code></pre>
+					<img src="img/prototype_chain.png" style="background-color: white" />
 				</section>
 				<section>
 					<h2>this</h2>
@@ -765,30 +855,76 @@ function f(a, b) {
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
 				</section>
 				<section>
-					<h2>Closure</h2>
+					<h2>Inheritance pattern I</h2>
 				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
->function counterConstructor(arg1, arg2) {
-	var count = 0,
-		myVar = 1,
-		_constr = function inner(){
-			//console.log(myVar);
-			return ++count;
-		};
-	myVar = 2;
-	return _constr;
+>function Parent(name) {
+    this.name = name || 'Adam';
+}
+
+Parent.prototype.say = function () {
+    return this.name;
 };
 
-var counter = counterConstructor();
-counter(); // 1
-counter(); // 2</code></pre>
+function Child(name) {}
+
+function inherit(P, C) {
+    C.prototype = new P();
+}
+
+inherit(Parent, Child);
+</code></pre>
 				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
->for (var i = 0; i < links.length; i++) {
-   //(function(i){}
-	   links[i].onclick = function() {
-	      console.log(i);
-	   }
-   //)(i)
-}</code></pre>
+>var kid = new Child(),
+     kid2 = new Child("Seth");
+kid.name = "Patrick";
+kid.say(); // "Patrick"
+
+kid2.say(); // 'Adam' oops
+				</code></pre>
+				<div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+					<img src="img/inh_pat_1.png" />
+				</div>
+				</section>
+				<section>
+					<h2>Inheritance pattern II</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function Child(a, b, c, d) {
+	Parent.apply(this, arguments);
+}
+</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>Child.prototype = new Parent();
+				</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var kid = new Child("Patrick");
+kid.name; // "Patrick"
+kid.say(); // "Patrick"
+delete kid.name;
+kid.say(); // "Adam"
+				</code></pre>
+				<div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+					<img src="img/inh_pat_2.png" />
+				</div>
+				</section>
+				<section>
+					<h2>Inheritance pattern III</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function inherit(C, P) {
+    var F = function () {};
+    F.prototype = P.prototype;
+    C.prototype = new F();
+}
+
+</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>C._super = P.prototype; // link to the parent constructor
+C.prototype.constructor = C; 
+// if it's not reseted, then all child objects will report, 
+// that Parent() is their constructor.
+				</code></pre>
+				<div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+					<img src="img/inh_pat_3.png" />
+				</div>
 				</section>
 				<section>
 					<h2>Namespace</h2>
@@ -866,6 +1002,19 @@ function showResult() {
 setTimeout(showResult, 0); // setImmediate(func) as alternative technique
 
 result = 2*2;</code></pre>
+				</section>
+				<section>
+					<h2>Sources</h2>
+					<ul>
+						<li><a href="http://learn.javascript.ru/">javascript.ru</a></li>
+						<li><a href="http://shamansir.github.io/JavaScript-Garden/">JavaScript Гарден - shamansir.github.com</a></li>
+						<li><a href="http://www.w3schools.com/js/default.asp">W3Schools Javascript Tutorial</a></li>
+						<li><a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">A Plain English Guide to JavaScript Prototypes</a></li>
+						<li><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns by Stoyan Stefanov</a></li>
+					</ul>
+				</section>
+				<section>
+					<h1>The End</h1>
 				</section>
 			</div>
 		</div>
