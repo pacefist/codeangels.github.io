@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Template presentation based on reveal.js intro</title>
+
+		<meta name="description" content="A dummy presentation for CodeAngelsJs Course">
+		<meta name="author" content="sudodoki / Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../shared/css/reveal.min.css">
+		<link rel="stylesheet" href="../shared/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+		<style type="text/css">
+			h2 {text-transform: none !important}
+		</style>
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../shared/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			    <section>
+				    <h2>Loading scripts</h2>
+					<pre><code class="javascript" style="max-height: none; overflow: hidden"
+>&lt;!doctype html> 
+&lt;html> 
+    &lt;head>
+        &lt;title>My App&lt;/title>
+    	&lt;!-- case 1 --> 
+    	&lt;script type="text/javascript">
+    	    console.log('Code could be put here');
+    	&lt;/script>
+    	&lt;!-- case 2 --> 
+    	&lt;!--All scripts in head block the page until they are executed--> 
+        &lt;script src="external_script.js" type="text/javascript">&lt;/script>
+        &lt;!-- Browser will not block rendering, when there is 'async' 
+        attribute in 'script' tag, is not supported in IE < 10 and Opera--> 
+        &lt;script src="script.js" type="text/javascript" async>&lt;/script>
+        &lt;!-- 'defer' is the same as 'async', but it keeps the order: small2.js 
+        will be executed after large2.js. Is not supported in Opera--> 
+        &lt;script src="large2.js" type="text/javascript" defer>&lt;/script>
+        &lt;script src="small2.js" type="text/javascript" defer>&lt;/script>
+        &lt;noscript>
+            <p>This page requires a JavaScript-enabled browser.</p>
+        &lt;/noscript>
+    &lt;/head> 
+    &lt;body> 
+	... 
+	&lt;!-- Will be executed after rendering of the page --> 
+        &lt;script src="external_script.js" type="text/javascript">&lt;/script>
+    &lt;/body> 
+&lt;/html>
+
+					</code></pre>
+				</section>
+				<section>
+				    <h2>Lazy loading</h2>
+				    <div class="text-left"><a href="http://requirejs.org/">RequireJS</a> - is a JavaScript file and module loader.</div>
+				    <pre class="fragment" data-fragment-index="0" ><code class="javascript" style="overflow: hidden"
+>require("extra.js", function () {
+    console.log('My script ia loaded');
+});</code></pre>
+					<pre class="fragment" data-fragment-index="1" ><code class="javascript" style="max-height: none"
+>function require(file, callback) {
+    var script = document.getElementsByTagName('script')[0],
+        sr = document.createElement('script'),
+        callback = callback || function(){};
+    // IE
+    sr.onreadystatechange = function () {
+        if (sr.readyState === 'loaded' || sr.readyState === 'complete') {
+            sr.onreadystatechange = null;
+            callback();
+        }
+    };
+    // others
+    sr.onload = function () {
+        callback();
+    };
+    sr.src = file;
+    script.parentNode.insertBefore(sr, script);
+}</code></pre>
+				</section>
+				<section>
+				    <h2>Browser detection</h2>
+				    <div class="text-left">Code of jQuery.browser, which is now moved to <a href="https://github.com/jquery/jquery-migrate">jquery-migrate plugin</a>.</div>
+					<pre class="fragment" ><code class="javascript" style="max-height: none"
+>if ( !jQuery.browser ) {
+	matched = jQuery.uaMatch( navigator.userAgent );
+	browser = {};
+
+	if ( matched.browser ) {
+		browser[ matched.browser ] = true;
+		browser.version = matched.version;
+	}
+
+	// Chrome is Webkit, but Webkit is also Safari.
+	if ( browser.chrome ) {
+		browser.webkit = true;
+	} else if ( browser.webkit ) {
+		browser.safari = true;
+	}
+
+	jQuery.browser = browser;
+}</code></pre>
+<pre class="fragment" data-fragment-index="1" ><a href="http://modernizr.com/is">Modernizr</a> is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.</pre>
+				</section>
+				<section>
+					<h2>Sources</h2>
+					<ul>
+						<li><a href="http://learn.javascript.ru/">javascript.ru</a></li>
+						<li><a href="http://shamansir.github.io/JavaScript-Garden/">JavaScript Гарден - shamansir.github.com</a></li>
+						<li><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns by Stoyan Stefanov</a></li>
+					</ul>
+				</section>
+				<section>
+					<h1>The End</h1>
+				</section>
+				
+			</div>
+		</div>
+
+
+		<script src="../shared/lib/js/head.min.js"></script>
+		<script src="../shared/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+	</body>
+</html>
+
