@@ -136,7 +136,7 @@
     <param name="movie" value="flash.swf" />
     <param name="play" value="true" />
     <embed src="flash.swf" width="300" height="120" play="true" loop="true" quality="high" pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" />
-&lt;/object> 
+&lt;/object>
 					</code></pre>
 					<div class="text-left">
 						<div>
@@ -178,12 +178,12 @@
 					<h2>Hello World</h2>
 					<pre><code>
 &lt;!DOCTYPE HTML>
-&lt;html>    
+&lt;html>
     &lt;head>
       &lt;meta charset='utf-8'/>
       &lt;script src='http://code.jquery.com/jquery-latest.min.js'>&lt;/script>
-    &lt;/head>    
-    &lt;body>        
+    &lt;/head>
+    &lt;body>
         &lt;script>alert('Hello world');&lt;/script>
     &lt;/body>
 &lt;/html>
@@ -228,7 +228,7 @@
  * Variables in JavaScript can consist letters, numbers and symbols $ and _
  * Variables cannot be started with number
  * Variable cannot have the same name, as any Javascript reserved word
- *  - the list of reserved words 
+ *  - the list of reserved words
  *http://developer.mozilla.org/docs/Web/JavaScript/Reference/Reserved_Words
  */
 var MY_PI = 3.14, // constant, just our agreement
@@ -239,21 +239,17 @@ var MY_PI = 3.14, // constant, just our agreement
 					</code></pre>
 				</section>
 				<section>
-				<h2>strict mode</h2>
+				<h2>Strict mode</h2>
 				<pre><code class="javascript"
->'strict mode';
+>'use strict';
 
 012; // will cause a SyntaxError
 eval('010'); // TypeError
 var_which_is_not_declared = 1; //ReferenceError
 
-var obj = {};
-delete obj.name; // Should be TypeError, but cannot reproduce
-
 (function(a){
     arguments.callee;// TypeError
     arguments.caller;// TypeError
-    arguments[0] = 2;// Should be TypeError, but cannot reproduce
 })(1)
 
 function f(x, x) { }// is a SyntaxError - duplicate parameters
@@ -263,30 +259,8 @@ function f(x, x) { }// is a SyntaxError - duplicate parameters
 				</section>
 				<section>
 					<h2>Coding Style</h2>
-					<div class="text-left">
-						<ul>
-							<li>Max line length - &lt;= 80 symbols;</li>
-							<li>Use a space between the '+' to&nbsp;improve readability;<br></li>
-						</ul>
-						<pre><code
->var string = 'Foo' + bar;
-string = bar + 'foo';
-string = bar() + 'foo';
-						</code></pre>
-						<ul>
-							<li>CamelCasing;</li>
-							<li>Indentation 2|4 spaces;</li>
-							<li>Declaration of functions should be located under the main code;</li>
-						</ul>
-						<p>
-						</p>
-						<pre><code
->function my(){...}
-function hello(){...}
-........
-var myVar, somethingElse;
-init();
-						</code></pre>
+					<div>
+						<img src="img/cheatsheet.png" />
 					</div>
 				</section>
 				<section>
@@ -322,7 +296,7 @@ init();
 				<pre><code class="javascript"
 >var num = 123,
     alsoANumber = new Number(567);
- 
+
  0xAA // 170 in hexadecimal
  010 // 8 in octal
  2e5 // 200000
@@ -332,9 +306,9 @@ init();
  'a' * 1 // NaN
  isNaN('abc' // true
  isFinite(123) // true if value is not NaN or Infinity
- 
+
  123.45678.toFixed(2) // "123.46"
- 0.1 + 0.2 // 0.30000000000000004 
+ 0.1 + 0.2 // 0.30000000000000004
 				</code></pre>
 				<div class="text-left">
 				<br>
@@ -419,29 +393,58 @@ for(var i = 0, l = list.length; i < l; i++) {
 				<section>
 				    <h2>Array's methods</h2>
 					<pre><code class="javascript"
->var obj = {
-         a: 1,
-         b: 2
-    };     
+>var obj = {a: 1, b: 2};
 Object.keys(obj); // ['a', 'b'] !! IE9-
 "Say hello to any".split(' '); // ["Say", "hello", "to", "any"]
-["Say", "hello", "to", "anybody"].join(','); //"Say,hello,to,anybody"
-					</code></pre>
+["Say", "hello", "to", "anybody"].join(','); //"Say,hello,to,anybody"</code></pre>
 					<pre class="fragment" data-fragment-index="0"><code class="javascript"
 >var arr = [7, 5, 2];
 delete arr[1] // [7, undefined, 2] oops
-arr.splice(1, 2, "some el", 5);
-arr // [7, undefined, "some el", 5]
-arr.slice(2, 3); // ["some el", 5]
-[1, 2, 3].concat([4, 5, 6]); // [1, 2, 3, 4, 5, 6]
-					</code></pre>
+arr.splice(1, 2, "some el", 5); // [undefined, 2]
+arr // [7, "some el", 5]
+arr.slice(2, 3); // [5]
+[1, 2, 3].concat([4, 5, 6]); // [1, 2, 3, 4, 5, 6];
+
+var arr = [7, 2, 5];
+arr.pop(); // 5 arr => [7, 2]
+arr.push(3); // 3 arr => [7, 2, 3]
+arr.shift(); // 7 arr => [2, 3]
+arr.unshift(10); // 3 arr => [10, 2, 3]</code></pre>
 					<pre class="fragment" data-fragment-index="1"><code class="javascript"
 >var a = [1, 2, 5, 10];
 a.sort(); // [1, 10, 2, 5] oops
+a.reverse(); // [5, 2, 10, 1]
 a.sort(function(a, b){
     return a - b;
-}); // [1, 2, 5, 10]
-					</code></pre>
+}); // [1, 2, 5, 10]</code></pre>
+				</section>
+				<section>
+				    <h2>Array's methods(requires Javascript 1.6)</h2>
+					<pre><code class="javascript" style="max-height: none"
+>var arr = [1, 'some el', 5, 4], tmp = {};
+arr.forEach(function(el){
+	tmp[el] = el;
+});
+tmp // Object({1: 1, 'some el': 'some el', 5: 5, 4: 4})
+
+[1,2,3,4,5].every(function(n){return n < 10;}); // true
+
+[1,2,3,4,5].some(function(n){return n < 2;}); // true
+
+[1,2,3,4,5].filter(function(n){return n > 3;}); // [4, 5]
+
+var items = [
+    {id: 1, name: 'John'},
+    {id: 2, name: 'Bob'},
+    {id: 3, name: 'Bill'}
+];
+items.map(function(el){return el.id;}); // [1, 2, 3]
+
+// Requires Javascript 1.8
+[1,2,3,4,5].reduce(function(x, y){return x + y;}); // 15</code></pre>
+<div class="fragment" data-fragment-index="1">
+	<a href="https://github.com/kriskowal/es5-shim/blob/master/es5-shim.js">es5-shim</a> contains all EcmaScript 5 methods that can be faithfully emulated with a legacy JavaScript engine.
+</div>
 				</section>
 				<section>
 					<h2>Equality</h2>
@@ -499,8 +502,7 @@ foo === foo;                 // true
 !!"0" // true, pay attention
 !!"" //false
 
-!!{} //true
-					</code></pre>
+!!{} //true</code></pre>
 				</section>
 				<section>
 				    <h2>undefined and null</h2>
@@ -538,7 +540,7 @@ str instanceof String // False
 
 var str2 = new String('hello world');
 console.log(typeof(str2)) // "object"
-str2 instanceof String // true 
+str2 instanceof String // true
 
 // Using of typeof
 if (typeof anyVar !== 'undefined') {...}
@@ -570,7 +572,7 @@ Math.PI // 3.141592653589793 - Returns PI
      theSameRegexp = new RegExp('hello', 'gi');
 
 'I\'m going to say you "hello"'.search(/hello/g) // 22
-'I like using Windows'.replace(/windows/i, 'Linux') 
+'I like using Windows'.replace(/windows/i, 'Linux')
 // "I like using Linux"
 
 /^\d+$/.test("Expected numeric value") // false
@@ -593,7 +595,7 @@ function f2c(x) {
 				</section>
 				<section>
 				<h2>Exceptions</h2>
-				<pre><code class="javascript" style="max-height: none" 
+				<pre><code class="javascript" style="max-height: none"
 >var myMegaObject = {};
 
 (function() {
@@ -637,7 +639,7 @@ function(){}(); // SyntaxError: Unexpected token (
 function a(){}(); // SyntaxError: Unexpected token )
 +function(){}(); // NaN
 				</code></pre>
-				<pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none" 
+				<pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
 >var anotherFunc = function(a, b) {
 	var c = 5;
 	console.log(a);
@@ -649,11 +651,35 @@ anotherFunc(2);
 // undefined
 console.log(c); // ReferenceError: c is not defined
 
-var foo = function bar() {
-    bar(); // works
-}
+var foo = function bar() { bar(); } // works
 bar(); // ReferenceError</code></pre>
 				<br>
+				</section>
+				<section>
+					<h2>Closure</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function counterConstructor(arg1, arg2) {
+	var count = 0,
+		myVar = 1,
+		_constr = function inner(){
+			//console.log(myVar);
+			return ++count;
+		};
+	myVar = 2;
+	return _constr;
+};
+
+var counter = counterConstructor();
+counter(); // 1
+counter(); // 2</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>for (var i = 0; i < links.length; i++) {
+   //(function(i){}
+	   links[i].onclick = function() {
+	      console.log(i);
+	   }
+   //)(i)
+}</code></pre>
 				</section>
 				<section>
 				<h2 style="text-align: center;">arguments</h2>
@@ -669,14 +695,14 @@ argumentsDetector('a', 123, {c: 1});
 //Argument 1: 123
 //Argument 2: [object Object]
 				</code></pre>
-				<pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none" 
+				<pre  class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
 >function a() {
 	console.log(arguments.callee);
 	console.log(arguments.callee.caller);
 }
 
 function b() {
-	a();	
+	a();
 }
 
 //Reference to a
@@ -684,12 +710,51 @@ function b() {
 				<br>
 				</section>
 				<section>
-					<h2>constructor</h2>
-				<pre><code class="javascript" style="max-height: none" 
+				<h2 style="text-align: center;">Continue with objects</h2>
+				<pre><code class="javascript" style="max-height: none"
+>var alien = {kind: 'alien'},
+    person = {kind: 'person'},
+    zack = {};
+
+zack.__proto__ = alien; // assign alien as the prototype of zack
+console.log(zack.kind); //=> 'alien'
+
+console.log(alien.isPrototypeOf(zack)); //=> true
+
+zack.__proto__ = person;
+console.log(zack.kind); //=> 'person'
+
+zack.kind = 'zack';
+console.log(zack.kind); //=> 'zack'
+console.log(person.kind); //=> 'person'
+</code></pre>
+<pre class="fragment" data-fragment-index="0">
+	<img src="img/prototype_object_chain.png" style="background-color: white" />
+</pre>
+				<br>
+				</section>
+				<section>
+					<h2>Object.create</h2>
+					<div class="text-left"><i>__proto__</i> is not a well supported way of assigning prototypes to objects.
+<i>Object.create</i> is available in ES5, but old browsers / engines can be shimmed using this <a href="https://github.com/kriskowal/es5-shim">es5-shim</a>.
+					</div>
+					<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var person = {
+  kind: 'person'
+}
+
+var zack = Object.create(person, {age: {value:  13} });
+console.log(zack.age); // => '13'
+console.log(zack.kind); // => 'person'
+Object.getPrototypeOf(zack); // => 'person'
+</code></pre>
+				</section>
+				<section>
+					<h2>Constructors</h2>
+				<pre><code class="javascript" style="max-height: none"
 >function Foo() {
     this.bla = 1;
 }
-
 Foo.prototype.test = function() {
     console.log(this.bla);
 };
@@ -698,6 +763,26 @@ var f = new Foo();
 f.test(); // 1
 Foo(); //undefined</code></pre>
 				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>// constructor
+var Gadget = function () {};
+// a static method
+Gadget.isShiny = function () {
+    return "you bet";
+};
+// a normal method added to the prototype
+Gadget.prototype.setPrice = function (price) {
+    this.price = price;
+};
+
+// calling a static method
+Gadget.isShiny(); // "you bet"
+// creating an instance and calling a method
+var iphone = new Gadget();
+iphone.setPrice(500);</code></pre>
+				</section>
+				<section>
+					<h2>Factory constructor pattern</h2>
+				<pre><code class="javascript" style="max-height: none"
 >function Bar() {
     var obj = {};
     obj.value = 'blub';
@@ -711,12 +796,21 @@ Foo(); //undefined</code></pre>
     }
     return obj;
 }
-new Bar();
 Bar();			</code></pre>
 				</section>
 				<section>
+					<h2>Prototype chain</h2>
+					<pre><code class="javascript" style="max-height: none"
+>if (typeof Array.prototype.myMethod === 'undefined') {
+    Array.prototype.myMethod = function(){
+        // put your code here
+    };
+}</code></pre>
+					<img src="img/prototype_chain.png" style="background-color: white" />
+				</section>
+				<section>
 					<h2>this</h2>
-				<pre><code class="javascript" style="max-height: none" 
+				<pre><code class="javascript" style="max-height: none"
 > var person = {
 	_name: 'Коля',
 	talk: function() {
@@ -742,14 +836,14 @@ person.talk();// 'My name is Коля'</code></pre>
 					<h2>apply and call</h2>
 				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
 >var person = {
-		_name: 'Коля',
-		talk: function() {
-			console.log('My name is ' + this._name);
-		}
-	},
-	showName = function(place, time) {
-		console.log(['Person', this.name, 'came to the', place, 'at', time].join(' '));
-	};
+        _name: 'Коля',
+        talk: function() {
+            console.log('My name is ' + this._name);
+        }
+    },
+    showName = function(place, time) {
+        console.log(['Person', this.name, 'came to the', place, 'at', time].join(' '));
+    };
 showName.call(person, 'shop', '10am'); // 'Person Коля came to the shop at 10am'
 showName.apply(person, ['shop', '10am']); // The same
 showName.call(null, 'shop', '10am'); // The same as showName.call(window, 'shop', '10am');</code></pre>
@@ -760,9 +854,171 @@ function f(a, b) {
 }				</code></pre>
 				<pre class="fragment" data-fragment-index="1"><code class="javascript" style="max-height: none"
 >var argumentsDetector = function() {
-	console.log('Arguments: ' + [].slice.call(arguments).join('; ');
+    console.log('Arguments: ' + [].slice.call(arguments).join('; ');
 };
 argumentsDetector('1', 2, 'afff'); //Arguments: 1; 2; afff</code></pre>
+				</section>
+				<section>
+					<h2>Inheritance pattern I</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function Parent(name) {
+    this.name = name || 'Adam';
+}
+
+Parent.prototype.say = function () {
+    return this.name;
+};
+
+function Child(name) {}
+
+function inherit(P, C) {
+    C.prototype = new P();
+}
+
+inherit(Parent, Child);
+</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var kid = new Child(),
+     kid2 = new Child("Seth");
+kid.name = "Patrick";
+kid.say(); // "Patrick"
+
+kid2.say(); // 'Adam' oops
+				</code></pre>
+				<div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+					<img src="img/inh_pat_1.png" />
+				</div>
+				</section>
+				<section>
+					<h2>Inheritance pattern II</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function Child(a, b, c, d) {
+	Parent.apply(this, arguments);
+}
+</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>Child.prototype = new Parent();
+				</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var kid = new Child("Patrick");
+kid.name; // "Patrick"
+kid.say(); // "Patrick"
+delete kid.name;
+kid.say(); // "Adam"
+				</code></pre>
+				<div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+					<img src="img/inh_pat_2.png" />
+				</div>
+				</section>
+				<section>
+					<h2>Inheritance pattern III</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>function inherit(C, P) {
+    var F = function () {};
+    F.prototype = P.prototype;
+    C.prototype = new F();
+}
+
+</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>C._super = P.prototype; // link to the parent constructor
+C.prototype.constructor = C;
+// if it's not reseted, then all child objects will report,
+// that Parent() is their constructor.
+				</code></pre>
+				<div class="fragment" data-fragment-index="1" style="position: absolute; top: 100px; right: -300px">
+					<img src="img/inh_pat_3.png" />
+				</div>
+				</section>
+				<section>
+					<h2>Namespace</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>(function( window, undefined ) {
+	//  Put your code hre
+})(window);</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>({
+	width: '600px',
+	height: '400px',
+	getParams: function() {
+		retutn {
+			width: this.width,
+			height: this.height
+		};
+	},
+	init: function(){
+		console.log('Initializing....');
+		// more init code
+	}
+}).init();</code></pre>
+				</section>
+				<section>
+					<h2>Etc....</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>//Self-defining functions
+var func = function(){
+	console.log('pre init');
+	func = function(){
+		console.log('init code');
+	};
+};
+func(); // pre init
+func(); // init code</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>//Currying
+function curry(x){
+    return function(y){
+        return x + y;
+    }
+}
+curry(4)(5); // 9</code></pre><pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>//Memoization
+var func = function (param) {
+	func.cache = func.cache || {};
+	if (!func.cache[param]) {
+		var result = {};
+		// ... expensive operation ...
+		func.cache[param] = result;
+	}
+	return func.cache[param];
+};</code></pre>
+				</section>
+				<section>
+					<h2>Timers</h2>
+				<pre><code class="javascript" style="max-height: none; word-wrap: break-word" data-trim contenteditable
+>var timerId = setTimeout(function(){
+	alert('Hello');
+}, 1000),
+    timerId2 = setTimeout("alert('Hello')", 1000);
+clearTimeout(timerId);
+clearTimeout(timerId2);</code></pre>
+				<pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var timerId = setInterval(function(){
+    console.log('Hello');
+});
+clearInterval(timerId);</code></pre><pre class="fragment" data-fragment-index="0"><code class="javascript" style="max-height: none"
+>var result;
+
+function showResult() {
+    alert(result);
+}
+
+setTimeout(showResult, 0);//setImmediate(func) as alternative technique
+
+result = 2*2;</code></pre>
+				</section>
+				<section>
+					<h2>Sources</h2>
+					<ul>
+						<li><a href="http://learn.javascript.ru/">javascript.ru</a></li>
+						<li><a href="http://shamansir.github.io/JavaScript-Garden/">JavaScript Гарден - shamansir.github.com</a></li>
+						<li><a href="http://www.w3schools.com/js/default.asp">W3Schools Javascript Tutorial</a></li>
+						<li><a href="http://sporto.github.io/blog/2013/02/22/a-plain-english-guide-to-javascript-prototypes/">A Plain English Guide to JavaScript Prototypes</a></li>
+						<li><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns by Stoyan Stefanov</a></li>
+					</ul>
+				</section>
+				<section>
+					<h1>The End</h1>
 				</section>
 			</div>
 		</div>

@@ -49,7 +49,6 @@ h3 {
 }
 
 a.btn {
-  display: inline-block;
   background: none repeat scroll 0 0 #559999;
   color: #fff;
   margin-right: 4px;
@@ -59,12 +58,7 @@ a.btn {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
   border-radius: 3px 3px 3px 3px;
 }
-a.btn + a.btn {
-  margin-top: 5px;
-}
-a.btn.secondary {
-  background-color: #444;
-}
+
 a.uc {
   font-style:italic;
   color: #aaa;
