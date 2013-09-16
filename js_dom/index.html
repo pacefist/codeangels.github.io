@@ -98,34 +98,57 @@
 }</code></pre>
 				</section>
 				<section>
+				    <h2>Browser's environment</h2>
+				    <img src="img/windowObjects.png" />
+				</section>
+				<section>
+				    <h2>Browser Object Model</h2>
+				    <img src="img/windowObjects.png" />
+				</section>
+				<section>
+				    <h2>Window</h2>
+				    <img src="img/win1.png" style="margin:0"/>
+				    <img class="fragment" data-fragment-index="0"  src="img/win2.png"  style="margin:0; position: absolute; left: 50%; margin-left: -365px;" />
+				</section>
+				<section>
+				    <h2 style="margin-bottom: 5px">Navigator</h2>
+				    <img src="img/nav.png" style="margin:0"/>
+				    <div  class="fragment" data-fragment-index="0" >
+				    	<h2 style="margin-bottom: 5px">Screen</h2>
+				    	<img src="img/screen.png" style="margin:0"/>
+				    </div>
+				</section>
+				<section>
 				    <h2>Browser detection</h2>
 				    <div class="text-left">Code of jQuery.browser, which is now moved to <a href="https://github.com/jquery/jquery-migrate">jquery-migrate plugin</a>.</div>
 					<pre class="fragment" ><code class="javascript" style="max-height: none"
->if ( !jQuery.browser ) {
-	matched = jQuery.uaMatch( navigator.userAgent );
-	browser = {};
+>jQuery.uaMatch = function( ua ) {
+    ua = ua.toLowerCase();
 
-	if ( matched.browser ) {
-		browser[ matched.browser ] = true;
-		browser.version = matched.version;
-	}
+    var match = /(chrome)[ \/]([\w.]+)/.exec( ua ) ||
+        /(webkit)[ \/]([\w.]+)/.exec( ua ) ||
+        /(opera)(?:.*version|)[ \/]([\w.]+)/.exec( ua ) ||
+        /(msie) ([\w.]+)/.exec( ua ) ||
+        ua.indexOf("compatible") < 0 && 
+        /(mozilla)(?:.*? rv:([\w.]+)|)/.exec( ua ) || [];
 
-	// Chrome is Webkit, but Webkit is also Safari.
-	if ( browser.chrome ) {
-		browser.webkit = true;
-	} else if ( browser.webkit ) {
-		browser.safari = true;
-	}
-
-	jQuery.browser = browser;
-}</code></pre>
+    return {
+        browser: match[ 1 ] || "",
+        version: match[ 2 ] || "0"
+    };
+};</code></pre>
 <pre class="fragment" data-fragment-index="1" ><a href="http://modernizr.com/is">Modernizr</a> is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.</pre>
+				</section>
+				<section>
+					<h2>Location & History</h2>
+					<img src="img/history.png" style="margin:0"/>
+				    <img class="fragment" data-fragment-index="0"  src="img/location.png"  style="margin:0; position: absolute; left: 50%; margin-left: -368px;" width="728"/>
 				</section>
 				<section>
 					<h2>Sources</h2>
 					<ul>
 						<li><a href="http://learn.javascript.ru/">javascript.ru</a></li>
-						<li><a href="http://shamansir.github.io/JavaScript-Garden/">JavaScript Гарден - shamansir.github.com</a></li>
+						<li><a href="http://www.w3schools.com/jsref/">W3Schools JavaScript and HTML DOM Reference</a></li>
 						<li><a href="http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752">JavaScript Patterns by Stoyan Stefanov</a></li>
 					</ul>
 				</section>
