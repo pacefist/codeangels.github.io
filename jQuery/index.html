@@ -155,17 +155,102 @@ $("p").toggleClass("main");
 						<h3 style="text-transform: none;">Working with existing DOM nodes:<br>
 							changing other attributes:
 						</h3>
-						<div class='text-left' style="margin-right: 170px; width: 750px; height: 207px;">
-									toggleClass(name, switch)<br>
-									Adds the specified class name if the switch expression evaluates to true, and removes the class name if the switch expression evaluates to false.
+						<div class='text-left' style="margin-right: 170px; width: 750px; height: 507px;">
+									<ul>
+									<li>
+									css(name,value)<br>
+									Sets the named CSS style property to the specified value for each matched element.
 									<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
-$("button").click(function(){
-$("p").toggleClass("main");
+$("div.expandable").css("width",function(index, currentWidth) {
+   return currentWidth + 20;
 });
 									</pre></code>
+									</li>
+									<li>
+									html(content):<br>
+									We can set or get only the text contents of elements.
+										<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
+<ul id="theList">
+          <li>One</li>
+          <li>Two</li>
+          <li>Three</li>
+          <li>Four</li>
+</ul>
+var text = $('#theList').text();
+									</pre></code>
+									</li>
+									</ul>
 						</div>
 					</section>
 
+					<section>
+						<h3 style="text-transform: none;">Working with existing DOM nodes:<br>
+							work with data attributes:
+						</h3>
+						<div class='text-left' style="margin-right: 170px; width: 750px; height: 507px;">
+						<ul><li>
+									attr(name,value):<br>
+									Sets the named attribute to the passed value for all elements in the wrapped set.
+									<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
+$('*').attr('title',function(index,previousValue) {
+  return previousValue + ' I am element ' + index +
+         ' and my name is ' + (this.id || 'unset');
+});
+									</pre></code>
+									</li>
+									<li>
+									removeAttr(name)<br>
+									Removes the specified attribute from every matched element.
+										<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
+$('*').removeAttr('title')
+									</pre></code>
+									</li>
+									</ul>
+						</div>
+					</section>
+
+<!--TODO Можно вставить страничку в которой выполнить код примера -->
+					<section>
+						<h3 style="text-transform: none;">Working with existing DOM nodes:<br>
+							work with data attributes:
+						</h3>
+						<div class='text-left' style="margin-right: 170px; width: 900px; height: 707px;">
+						<ul><li>
+									.css():<br>
+									Get the value of a style property for the first element in the set of matched elements or set one or more CSS properties for every matched element.
+									<pre><code data-trim contenteditable style="word-wrap: break-word; width: 900px;">
+&lt;head>
+  &lt;style>
+  div {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    float: left;
+  }
+  &lt;/style>
+  &lt;script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+&lt;/head>
+<body>
+<span id="result">&nbsp;</span>
+<div style="background-color:blue;"></div>
+<div style="background-color:rgb(15,99,30);"></div>
+<div style="background-color:#123456;"></div>
+<div style="background-color:#f11;"></div>
+&lt;script>
+$( "div" ).click(function() {
+  var color = $( this ).css( "background-color" );
+  $( "#result" ).html( "That div is <span style='color:" +
+    color + ";'>" + color + "</span>." );
+});
+&lt;/script>
+&lt;/body>
+									</pre></code>
+									</li>
+									</ul>
+						</div>
+					</section>
+
+					
 
 					<section>
 						<h3 style="text-transform: none;">Creating new DOM nodes:</h3>
