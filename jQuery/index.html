@@ -41,6 +41,9 @@
 					<div class='text-left' style="margin-right: 170px; width: 797px; height: 350px;">
 						<ul>
 							<li><a href="http://jquery.com/" target="_blank">jQery.com</a></li>
+							<pre><code data-trim contenteditable style="word-wrap: break-word; width: 950px;">
+							&lt;script type="text/javascript" src="/libs/jquery/1.2.1/jquery.min.js">&lt;/script>
+							</pre></code>
 							<li> 8813 - 6 lines of code, you can download it into libs in your app or use <a href="http://en.wikipedia.org/wiki/Content_delivery_network" target="_blank">CDN:</a></li>
 							<ul>
 							<li><a href="https://developers.google.com/speed/libraries/devguide?hl=ru&csw=1#jquery" target="_blank">Google CDN</a></li>
@@ -90,10 +93,159 @@
 					</section>
 
 					<section>
-						<h3 style="text-transform: none;">Traversing the DOM:</h3>
+						<h3 style="text-transform: none;"><a href="http://api.jquery.com/category/selectors/" target="_blank">Selectors:</a></h3>
+						<div class='text-left' style="margin-right: 170px; width: 1200px;">
+						<ul>
+							<li>All selectors that we got in css +:</li><!-- TODO add link to css selectors -->
+							<ul>
+								<li>:animated Selector</li>
+								<li>Attribute Contains Prefix Selector [name|="value"]</li>
+								<li>:button Selector</li>
+								<li>:has() Selector</li>
+								<li>:checked Selector</li>
+								<li>:not() Selector</li>
+								<li>:contains() Selector</li>
+								<li>:disabled Selector</li>
+								<li>:empty Selector</li>
+								<li>:enabled Selector</li>
+								<li>:eq() Selector</li>
+								<li>:even Selector</li>
+								<li>:file Selector</li>
+								<li>...</li>
+							</ul>
+					 </ul>
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Travesing</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px;">
+							<ul>
+								<li>.parentsUntil()</li>
+								<li>.parents()</li>
+								<li>.parent</li>
+								<li>.next()</li>
+								<li>.nextAll()</li>
+								<li>.find()</li>
+								<li>.closest()</li>
+								<li>.prev()</li>
+								<li>.eq()</li>
+								<li>.siblings()</li>
+								<li>.filter()</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Working with existing DOM nodes:<br>
+							toggling classes:
+						</h3>
+						<div class='text-left' style="margin-right: 170px; width: 750px; height: 207px;">
+									toggleClass(name, switch)<br>
+									Adds the specified class name if the switch expression evaluates to true, and removes the class name if the switch expression evaluates to false.
+									<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
+$("button").click(function(){
+$("p").toggleClass("main");
+});
+									</pre></code>
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Working with existing DOM nodes:<br>
+							changing other attributes:
+						</h3>
+						<div class='text-left' style="margin-right: 170px; width: 750px; height: 207px;">
+									toggleClass(name, switch)<br>
+									Adds the specified class name if the switch expression evaluates to true, and removes the class name if the switch expression evaluates to false.
+									<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
+$("button").click(function(){
+$("p").toggleClass("main");
+});
+									</pre></code>
+						</div>
+					</section>
+
+
+					<section>
+						<h3 style="text-transform: none;">Creating new DOM nodes:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-							
-							
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Events:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Animate:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Utility functions:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">isXMLDoc(node):</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">JQuery plugins:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">AJAX:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">http://jqueryui.com/:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">http://jquerymobile.com/:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Simple stuff you can do in modern browsers:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+								<ul>
+									<li></li>
+								</ul>
+						</div>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;">Alternative:</h3>
+						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+							<ul>
+              <li><a href="http://zeptojs.com/" target="_blank">zepto.js</a></li>
+              <li>jQuery Mobile analog<a href="http://eightmedia.github.io/hammer.js/" target="_blank">eightmedia.github.io/hammer.js</a></li>
+					 </ul>
 						</div>
 					</section>
 
