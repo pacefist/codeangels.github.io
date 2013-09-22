@@ -526,7 +526,7 @@ myTest.hi() # => ola, stranger
           </code></pre>
           </section>
           <section>
-            <h1>Constructor function</h1>
+            <h1>super & extends </h1>
 <pre><code contenteditable>
 class Animal
   constructor: (@species) ->
@@ -542,7 +542,28 @@ class Cow extends Animal
 </code></pre>
           </section>
         </section>
+        <section>
+          <h2>I'll have sugar with my coffee</h2>
+          <ul>
+            <li>ES5's <span class="inline-code">items.forEach(fn)</span> ~ <span class="inline-code">fn(item) for item in items</span></li>
+            <li>ES5's <span class="inline-code">xs.map(fn)</span> ~ <span class="inline-code">(fn(x) for x in xs)</span>
+            <pre><code data-trim>
+              var result = items.map(function(item, i){
+return item.name})
+              equal to
+result = (item.name for item in items)
+            </code></pre>
+            </li>
+            <li>ES5's select ~ for .. when</li>
+            <li><span class="inline-code">(xs.indexOf(y) != -1)</span> ~ <span class="inline-code">y in xs</span></li>
+            <li><span class="inline-code">and, or, or=, ?=</span></li>
+            <li>Destructive assignment <span class="inline-code">[a, b] = [1, 2]</span>, 
+            <span class="inline-code">{a, b} ={a: 1, b: 2}</span>
+            </li>
+            <li><span class="inline-code">$ -></span> ~ <span class="inline-code">$(function() {});</span></li>
 
+          </ul>
+        </section>
         <section>
           <h2>Intergalactic Interconnections</h2>
           <p>
