@@ -2,3 +2,12 @@
 abbr.dotted {
   border-bottom:1px dotted;
 }
+.reveal section pre.narrow {
+  width: 50%;
+  float: left;
+}
+
+
+.annotated code.comments {
+  font-size: 1em;
+}
