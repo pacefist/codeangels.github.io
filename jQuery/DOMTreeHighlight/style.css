@@ -1,0 +1,58 @@
+/* Put your css in here */
+root {
+  display: block;
+  font-size: 30px;
+}
+
+[traversable] * {
+  display: block;
+  font-size: 1em;
+}
+
+[traversable]::before, [traversable] *::before {
+  content: attr(traversable-name);
+  width: auto;
+}
+
+[traversable-name] {
+  position: relative;
+  border-color: black;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 30px;
+  float: left;
+  clear: both;
+}
+
+.first-child::after {
+  position: absolute;
+  top: 0;
+  height: 0.6em;
+  left: -0.75em;
+  width: 0.5em;
+  border-style: none none solid solid;
+  content: '';
+  border-width: 0.1em;
+}
+.nested + .regular-child::after {
+  border-style: solid none solid solid;
+  height: 1.2em;
+  top: 0.6em;
+}
+.regular-child::after { 
+  position: absolute;
+  top: 0;
+  bottom: -0.6em;
+  left: -0.75em;
+  width: 0.5em;
+  border-style: none none solid solid;
+  content: '';
+  border-width: 0.1em;
+}
+
+
+.highlight {
+  background-color: yellow;
+}
+
+.ace_editor { height: 200px; width: 50%; }
