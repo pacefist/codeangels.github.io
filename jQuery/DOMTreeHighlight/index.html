@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS DOM Traversal</title>
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+
+  <body ng-app="sample">
+    <div id='main' ng-controller='MainCtrl'>
+        $('root').<input placeholder='input your selector and stuff' type="text" name="traversing" ng-model='traverse' id="traversing" value="" />
+        <div ui-ace ng-model='domTree'></div>
+        <root traversable='' angular-html-bind="domTree" highlight='{{ traverse }}'>
+        </root>
+
+    </div>
+    <script>document.write('<script src="http://' + (location.host || "localhost").split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+    <script src="jquery.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      var app = angular.module('sample', ['ui.ace'])
+
+      app.controller('MainCtrl', function($scope) {
+        $scope.traverse = "find('span')"
+        $scope.domTree = "<span>\n"+
+          "\t<span></span>\n"+
+          "</span>\n"+
+          "<label for=''>\n"+
+          "</label>\n"+
+          "<span></span>\n"+
+          "<span></span>\n"+
+          "<span></span>\n"+
+          "<span>\n"+
+          "\t<span></span>\n"+
+          "</span>"
+      })
+
+      app.directive('traversable', function(){
+        return {
+          restrict: 'EA',
+          link: function($scope, el, attrs) {
+            var id = el.get('id'), root
+            if ('undefined' == typeof id) {
+              id = 'traversable' + ('' + Math.random()).slice(2, -1)
+              el.attr('id', id)
+            }
+            root = "$('#" + id + "')."
+            function iterate(fn) {
+              el.find('*').andSelf().each(fn)
+            }
+            attrs.$observe('highlight', function(newValue) {
+              try {
+                highlight = eval(root + newValue)
+              } catch (e) {
+                highlight = null
+              }
+              iterate(function(){
+                if ($(this).is(highlight)) {
+                  $(this).addClass('highlight')
+                } else {
+                  $(this).removeClass('highlight')
+                }
+              })
+            })
+            $scope.$watch(attrs.angularHtmlBind, function(newValue) {
+              el.html(newValue)
+              iterate((function(){
+                $(this).attr('traversable-name', $(this).prop("tagName").toLowerCase())
+                if ($(this).is('[traversable]')) { return }
+                if ($(this).children().length > 0) {$(this).addClass('nested')}
+                if ($(this).prev().length == 0) {
+                  $(this).addClass('first-child')
+                } else {
+                  if ($(this).next().length > 0) {
+                    $(this).addClass('regular-child')
+                  }
+                }
+              }))
+            })
+          }
+        }
+      })
+    </script>
+  </body>
+
+</html>

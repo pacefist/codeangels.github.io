@@ -200,3 +200,10 @@ span.small {
   font-size: 0.5em;
   vertical-align: top;
 }
+
+.awesomely-big {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
