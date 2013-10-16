@@ -144,7 +144,7 @@
 							toggling classes:
 						</h3>
 						<div class='text-left' style="margin-right: 170px; width: 750px; height: 207px;">
-									toggleClass(name, switch)<br>
+									.toggleClass(name, switch)<br>
 									Adds the specified class name if the switch expression evaluates to true, and removes the class name if the switch expression evaluates to false.
 									<pre><code data-trim contenteditable style="word-wrap: break-word; width: 750px;">
 $("button").click(function(){
@@ -213,6 +213,7 @@ $('*').removeAttr('title')
 					</section>
 
 <!--TODO Можно вставить страничку в которой выполнить код примера -->
+
 					<section>
 						<h3 style="text-transform: none;">Working with existing DOM nodes:<br>
 							work with data attributes:
@@ -253,54 +254,99 @@ $( "div" ).click(function() {
 						</div>
 					</section>
 
-					
+					<section>
+						<h3 style="text-transform: none;">forms, val(), serialize(), serializeArray()<br>
+					</section>
+
+					<section>
+						<h3 style="text-transform: none;"> html(), text(), wrap()</h3>
+					</section>
 
 					<section>
 						<h3 style="text-transform: none;">Creating new DOM nodes:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+								<p>-$('<img>', {
+src: 'images/little.bear.png',
+title:'I woof in your general direction',
+click: function(){
+alert($(this).attr('title'));
+}
+})
+- http://ejohn.org/blog/dom-documentfragments/
+- http://stackoverflow.com/a/8461877
+- client-side templating 
+https://github.com/BorisMoore/jquery-tmpl</p>
 						</div>
 					</section>
 
 					<section>
 						<h3 style="text-transform: none;">Events:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+							<p>-  The DOM level 0 event Model, The DOM level 2 	event model, IE event model	
+	- bind, live -> on
+	- unbind, die -> off
+	- http://api.jquery.com/category/events/
+	- http://api.jquery.com/jQuery.proxy/</p>
 						</div>
 					</section>
 
 					<section>
 						<h3 style="text-transform: none;">Animate:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+								<p>- toggle, slide, fade
+- animate (step, complete, queue, progress)http://www.google.com/url?q=http%3A%2F%2Fapi.jquery.com%2F%3Fs%3Dtoggle&sa=D&sntz=1&usg=AFQjCNGqpiK07Ap1IeCEx3JnBRdiuXHyJg
+- stop http://www.google.com/url?q=http%3A%2F%2Fapi.jquery.com%2Fanimate%2F&sa=D&sntz=1&usg=AFQjCNFQSKvRwp_tXyEK77wTMaSet3eJzQ
+</p>
 						</div>
 					</section>
 
 					<section>
 						<h3 style="text-transform: none;">Utility functions:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+								<p>
+									- $.active, $.fx.off, $.support
+- $.noConflict
+- $.trim, $.map, $.each, $.grep
+- $.inArray, $.makeArray, $.unique, $.merge, $.extend, $.param
+-  $.isArray(o), $.isEmptyObject(o), $.isFunction(o), $.isPlainObject(o)m 
+								</p>
 						</div>
 					</section>
 
 					<section>
 						<h3 style="text-transform: none;">isXMLDoc(node):</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+								<p>
+									- $.noop
+- $.contains,
+- $.data, $.removeData
+- $.parseJSON
+- $.globalEval
+- $.getScript
+								</p>
 						</div>
 					</section>
 
 					<section>
 						<h3 style="text-transform: none;">JQuery plugins:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+								<p>
+									- http://plugins.jquery.com/
+-http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#jquerypluginpatterns
+								</p>
 						</div>
 					</section>
 
 					<section>
 						<h3 style="text-transform: none;">AJAX:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								
+							<p>
+								- A brief overview of Ajax
+- load, $.get, $,post , $.getJSON
+- $.ajax
+- $.ajaxSetup
+- $.active
+							</p>
 						</div>
 					</section>
 
@@ -321,9 +367,12 @@ $( "div" ).click(function() {
 					<section>
 						<h3 style="text-transform: none;">Simple stuff you can do in modern browsers:</h3>
 						<div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
-								<ul>
-									<li></li>
-								</ul>
+								http://tech.pro/tutorial/1385/out-growing-jquery
+http://remysharp.com/2013/04/19/i-know-jquery-now-what/
+http://www.leebrimelow.com/native-methods-jquery/
+http://www.2ality.com/2013/06/triggering-events.html
+https://github.com/eligrey/classList.js/blob/master/classList.js
+http://blog.ponyfoo.com/2013/06/10/uncovering-the-native-dom-api
 						</div>
 					</section>
 
