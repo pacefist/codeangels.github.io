@@ -120,6 +120,38 @@
 					</ul>
 				</section>
 				<section>
+					<h2>Scope <sup>&#42;</sup></h2>
+<pre><code data-trim contenteditable>
+<div>
+    <style type="text/css" scoped>
+        h6 {
+	    color: #ff0;
+	    font-size: 18px;
+	}
+	p {
+	    font-size: 12px;
+	}
+    </style>
+    <h6>Scope</h6>
+    <p>Check the page in FF.</p>
+</div>
+</code></pre>
+<div>
+    <style type="text/css" scoped>
+        h6 {
+	    color: #ff0;
+	    font-size: 18px;
+	}
+	p {
+	    font-size: 12px;
+	}
+    </style>
+    <h6>Scope</h6>
+    <p>Check the page in FF.</p>
+    <p><sup>&#42;</sup> <small>Don't use pseudo-elements in your scope</small></p>
+</div>
+				</section>
+				<section>
 					<h2>What is in your style</h2>
 					
 					<ol>
@@ -161,13 +193,14 @@ display: block;
 						<li>
 							Class selectors:
 <pre><code data-trim contenteditable>
-.class_name-example2 {}
+.class_name {}
 </code></pre>
 							<ol>
 								<li>Must begin with a period</li>
 								<li>Only letters, numbers, hyphens, underscores</li>
 								<li>After the period, must always start with a letter</li>
 								<li>.Case_sensitive isn't the same as .case_sensitive</li>
+								<li>You can use multiple classes in tags</li>
 							</ol>	
 						</li>
 						<br/> 
@@ -182,6 +215,7 @@ display: block;
 								<li>Only letters, numbers, hyphens, underscores</li>
 								<li>After the "#", must always start with a letter</li>
 								<li>#Case_sensitive isn't the same as #case_sensitive</li>
+								<li>You can't use multiple classes in tags</li>
 							</ol>	
 						</li>
 					</ul>
@@ -274,7 +308,7 @@ ul.list_example2 ~ p {
 					<h2>Attribute selectors</h2>
 					<p>a[title] <small>with concrette title</small></p>
 					<p>a[href="http://test.com"]</p>
-					<p>a[href*="http"] <small>for someday, somehow, etc.</small></p>
+					<p>a[href*="http"]</p>
 					<p>input[type=radio]:checked</p>
 					<p>etc...</p>
 				</section>
@@ -347,7 +381,7 @@ ul.list_example2 ~ p {
 				</section>
 				<section>
 					<p>:first-letter</p>
-					<ul>
+					<ul class="list2">
 						<li>font properties</li>
 						<li>color properties</li>
 						<li>background properties</li>
@@ -364,7 +398,7 @@ ul.list_example2 ~ p {
 				</section>
 				<section>
 					<p>:first-line</p>
-					<ul>
+					<ul class="list2">
 						<li>font properties</li>
 						<li>color properties</li>
 						<li>background properties</li>
@@ -488,15 +522,15 @@ p {
 					<section>
 						<h4>Font</h4>
 						<ul class="list2">
-							<li class="fragment" data-fragment-index="0">font</li>
-							<li class="fragment" data-fragment-index="1">font-family</li>
-							<li class="fragment" data-fragment-index="2">font-size</li>
-							<li class="fragment" data-fragment-index="3">font-style</li>
-							<li class="fragment" data-fragment-index="4">font-variant</li>
-							<li class="fragment" data-fragment-index="5">font-weight</li>
-							<li class="fragment" data-fragment-index="6">@font-face</li>
-							<li class="fragment" data-fragment-index="7">font-size-adjust <small>FF support</small></li>
-							<li class="fragment" data-fragment-index="8">font-stretch <small>no one support</small></li>
+							<li>font</li>
+							<li>font-family</li>
+							<li>font-size</li>
+							<li>font-style</li>
+							<li>font-variant</li>
+							<li>font-weight</li>
+							<li>@font-face</li>
+							<li>font-size-adjust <small>FF support</small></li>
+							<li>font-stretch <small>no one support</small></li>
 						</ul>
 					</section>
 					<section>
@@ -504,23 +538,26 @@ p {
 						
 						<h4>Serif family:</h4>
 						<ul class="list2">
-							<li>Times;</li>
-							<li>Times New Roman;</li>
-							<li>Georgia;</li>
+							<li style="font-family: times;">Times;</li>
+							<li style="font-family: Times New Roman;">Times New Roman;</li>
+							<li style="font-family: Georgia;">Georgia;</li>
 							<li>etc.</li>
 						</ul>
 						<br/><br/>
 						<h4>Sans-serif family:</h4>
 						<ul class="list2">
-							<li>Arial;</li>
-							<li>Helvetica;</li>
-							<li>Verdana;</li>
-							<li>Tahoma;</li>
-							<li>etc.</li>							
+							<li style="font-family: Arial;">Arial;</li>
+							<li style="font-family: Helvetica;">Helvetica;</li>
+							<li style="font-family: Verdana;">Verdana;</li>
+							<li style="font-family: Tahoma;">Tahoma;</li>
+							<li style="font-family:;">etc.</li>							
 						</ul>
+						
+						<br/><br/>
+						<h6>Shorthand:</h6>
 <pre><code data-trim contenteditable>
 p {
-    font-family: Arial, Tahoma, sans-serif;
+    font: italic bold 16px/16px Arial, sans-serif;
 }
 </code></pre>
 					</section>
@@ -545,6 +582,7 @@ p {
     font: 16px oswaldbook, sans-serif;
 }
 </code></pre>
+						<p><a href="http://www.fontsquirrel.com/">http://www.fontsquirrel.com/</a></p>
 					</section>
 					<section>
 						<h4>Google fonts</h4>
@@ -558,43 +596,49 @@ p {
     font-family: 'Kite One', sans-serif;
 }
 </code></pre>
-					</section>
-					<section>
-						<h4>Cufon???</h4>
+						<p><a href="http://www.google.com/fonts">http://www.google.com/fonts</a></p>
 					</section>
 				</section>
 				<section>
 					<h4>Text</h4>
 					<ul class="list2">
-						<li class="fragment" data-fragment-index="0">color</li>
-						<li class="fragment" data-fragment-index="1">letter-spacing</li>
-						<li class="fragment" data-fragment-index="2">line-height</li>
-						<li class="fragment" data-fragment-index="3">text-align</li>
-						<li class="fragment" data-fragment-index="4">text-decoration</li>
-						<li class="fragment" data-fragment-index="5">text-indent</li>
-						<li class="fragment" data-fragment-index="6">text-transform</li>
-						<li class="fragment" data-fragment-index="7">vertical-align</li>
-						<li class="fragment" data-fragment-index="8">white-space</li>
-						<li class="fragment" data-fragment-index="9">word-spacing</li>
-						<li class="fragment" data-fragment-index="10">text-justify</li>
-						<li class="fragment" data-fragment-index="11">text-overflow</li>
-						<li class="fragment" data-fragment-index="12">text-shadow</li>
-						<li class="fragment" data-fragment-index="13">text-wrap</li>
-						<li class="fragment" data-fragment-index="14">word-break</li>
-						<li class="fragment" data-fragment-index="15">word-wrap</li>
+						<li>color</li>
+						<li>letter-spacing</li>
+						<li>line-height</li>
+						<li>text-align</li>
+						<li>text-decoration</li>
+						<li>text-indent</li>
+						<li>text-transform</li>
+						<li>vertical-align</li>
+						<li>white-space</li>
+						<li>word-spacing</li>
+						<li>text-justify</li>
+						<li>text-overflow</li>
+						<li>text-shadow</li>
+						<li>text-wrap</li>
+						<li>word-break</li>
+						<li>word-wrap</li>
 					</ul>
 				</section>
 				<section>
 					<h4>Background</h4>
 					<ul class="list2">
-						<li class="fragment" data-fragment-index="0">background</li>
-						<li class="fragment" data-fragment-index="1">background-attachment</li>
-						<li class="fragment" data-fragment-index="2">background-color</li>
-						<li class="fragment" data-fragment-index="3">background-image</li>
-						<li class="fragment" data-fragment-index="4">background-position</li>
-						<li class="fragment" data-fragment-index="5">background-repeat</li>
-						<li class="fragment" data-fragment-index="6">background-size</li>
+						<li>background</li>
+						<li>background-attachment</li>
+						<li>background-color</li>
+						<li>background-image</li>
+						<li>background-repeat</li>
+						<li>background-position</li>
+						<li>background-size</li>
 					</ul>
+					<br/><br/>
+					<h6>Shorthand:</h6>
+<pre><code data-trim contenteditable>
+p {
+    background: fixed #fff url(bg.png) no-repeat right bottom;
+    background-size: 100% auto;    
+}
+</code></pre>
 				</section>
 				<section>
 					<h4>Gradient</h4>
@@ -619,6 +663,15 @@ p {
 					<h4>border-radius</h4>
 <pre><code data-trim contenteditable>
     border-radius: top-left top-right bottom-right bottom-left;
+</code></pre>
+					<br/><br/>
+					<h6>Shorthand:</h6>
+<pre><code data-trim contenteditable>
+p {
+    border: 1px solid #ff0;
+    border-width: 2px 10px;
+    border-radius: 4px;
+}
 </code></pre>
 				</section>
 				<section>
@@ -790,11 +843,41 @@ height: 20px;
 				</section>
 				
 				<section>
+					<section>
 					<h4>Multi-column Properties</h4>
 					<ul class="list2">
 						<li>column-count</li>
 						<li>column-gap</li>
+						<li>column-rule (width, style, color)</li>
+						<li>column-span (1, all)</li>
+						<li>column-width</li>
+						<li>column-fill</li>
+						<li>break-* (before, after, inside,) -
+						auto | always | avoid | left | right | page | column | avoid-page | avoid-column;</li>
 					</ul>
+					</section>
+					<section>
+						<dl class="list2">
+							<dt>auto</dt>
+							<dd>Specifies to neither force nor forbid a page/column break before the element.</dd>
+							<dt>always</dt>
+							<dd>Specifies to always force a page break before the element.</dd>
+							<dt>avoid</dt>
+							<dd>Specifies to avoid a page break before the element.</dd>
+							<dt>left</dt>
+							<dd>Specifies to force one or two page breaks before the element so that the next page is formatted as a left page.</dd>
+							<dt>right</dt>
+							<dd>Specifies to force one or two page breaks before the element so that the next page is formatted as a right page.</dd>
+							<dt>page</dt>
+							<dd>Specifies to always force a page break before the element.</dd>
+							<dt>column</dt>
+							<dd>Specifies to always force a column break before the element.</dd>
+							<dt>avoid-page</dt>
+							<dd>Specifies to avoid a page break before the element.</dd>
+							<dt>avoid-column</dt>
+							<dd>Specifies to avoid a column break before the element.</dd>
+						</dl>
+					</section>
 				</section>
 				
 				<section>
@@ -805,46 +888,12 @@ height: 20px;
 						<li>empty-cells</li>
 					</ul>
 				</section>
-				<section>
-					<h4>Transform Properties</h4>					
-<pre><code data-trim contenteditable>
-div {
-    transform:rotate(Xdeg);
-}
-</code></pre>
-					<h4>Transition Properties</h4>
-<pre><code data-trim contenteditable>
-transition: [transition-property] [transition-duration]
-[transition-timing-function] [transition-delay];
-</code></pre>
+				<section>					
+					<h4>To be continued...</h4>
+					<br/><br/>
 					<div class="transition_example"></div>
-<pre><code data-trim contenteditable>
-div {
-    width: 100px;
-    height: 100px;
-    background-color: yellow;
-    transition: all 0.5s ease 1s;
-    -webkit-transition: all 0.5s ease 1s;
-}
-div:hover {
-    width: 200px;
-    background: lightblue;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-}
-</code></pre>
-				</section>
-				<section>
-					<h2>Vendor prefixes</h2>
-					<p><a href="#">http://css3please.com/</a></p>
-					<p><a href="#">http://prefixr.com/index.php</a></p>
-				</section>
-				<section>
-					<h2>More about css3</h2>
-					<p><small>fill this</small></p>
-				</section>
+				</section>				
 			</div>
-
 		</div>
 
 		<script src="../shared/lib/js/head.min.js"></script>

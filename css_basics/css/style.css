@@ -38,14 +38,24 @@ p.styled {
 }
 
 ul.list li,
-ul.list2 li {
+ul.list2 li,
+.reveal dl {
     color: lightblue;
     font-size: 18px;
     line-height: normal;
+    text-align: left;
 }
 
-ul.list2 li {
+ul.list2 li,
+.reveal dl dt,
+.reveal dl dd {
     font-size: 22px;
+}
+
+.reveal dl dd {
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-indent: 30px;
 }
 
 h2.external_example {    
@@ -130,6 +140,10 @@ ul.list_example + p {
     background: #c6ff39;
 }
 
+.reveal .before-after_example {
+    border: 1px solid lightblue;
+}
+
 .before-after_example:before {
     content: "Description";
 }
@@ -182,7 +196,6 @@ ul.list_example + p {
     height: 100px;
     background: yellow;
     transition: all 0.5s ease 1s;
-    -webkit-transition: all 0.5s ease 1s;
 }
 
 .reveal .transition_example:hover {
