@@ -900,6 +900,7 @@ In case of styling, name classes accordingly
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
+					{ src: '../shared/lib/js/head.min.js' },
 					{ src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
@@ -908,7 +909,40 @@ In case of styling, name classes accordingly
 					{ src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+	// map the url to the presentation id
+	var pathNameArr = window.location.pathname.split("/");
+	if(pathNameArr.length > 1)
+		presentation_id = pathNameArr[1];
 
+	head.js( 'http://'+window.location.hostname+'/socket.io/socket.io.js' , function() {
+		// connect
+		 var socket = io.connect('http://'+window.location.hostname);
+			socket.on('connect', function () {
+				console.log("client connected. Sending cur slide request");
+				// on connect send presentation request
+				socket.emit('request_presentation', {'id': presentation_id} );
+				// init data
+				socket.on('initdata', function(data) {
+					console.log("Init data: " + JSON.stringify(data) );
+					if(data.id == presentation_id)
+					{
+						// go to the respective slide
+						Reveal.navigateTo(data.indexh, data.indexv);
+					}
+				});
+			socket.on('updatedata', function(data) {
+				console.log("Receive update data: " + JSON.stringify(data) );
+				if(data.id == presentation_id) {
+					if (data.cmd == 'nextFragment') {
+						Reveal.nextFragment();
+					} else {
+						// go to the respective slide
+						Reveal.navigateTo(data.indexh, data.indexv);
+					}
+				}
+			});
+		});
+	} );
 		</script>
 
 	</body>
