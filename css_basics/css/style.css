@@ -52,6 +52,10 @@ ul.list2 li,
     font-size: 22px;
 }
 
+ul.list2 li em {
+    font-size: 18px;
+}
+
 .reveal dl dd {
     margin-bottom: 10px;
     font-size: 18px;
@@ -188,6 +192,15 @@ ul.list_example + p {
     display: block;
     height: inherit;
     background: blue;
+}
+
+.reveal .box_sizing_example {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+.reveal .box_sizing_example span {
+    height: auto;
 }
 
 .reveal .transition_example {
