@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>jQuery</title>
+
+  <meta name="description" content="A dummy presentation for CodeAngelsJs Course">
+  <meta name="author" content="sudodoki / Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="../shared/css/reveal.min.css">
+  <link rel="stylesheet" href="../shared/css/theme/default.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="../shared/lib/css/zenburn.css">
+  <style type="text/css">
+    h2 {text-transform: none !important}
+  </style>
+
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+    document.write( '<link rel="stylesheet" href="../shared/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+  </script>
+
+        <!--[if lt IE 9]>
+        <script src="../shared/lib/js/html5shiv.js"></script>
+        <![endif]-->
+      </head>
+
+      <body>
+        <div class="reveal">
+          <div class="slides">
+
+            <section>
+              <h3 style="text-transform: none;">Download jQuery</h3>
+              <div class='text-left' style="margin-right: 170px; width: 797px; height: 207px;">
+                <ul>
+                  <li><a href="http://jquery.com/download/">http://jquery.com/download/</a>
+                  </li>
+                  <li>CDN
+                    <pre><code contenteditable data-trim style='width: -webkit-calc(120% + 4px)'>
+                      <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+                      <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+                    </code></pre>
+                  </li>
+                  <li><a href="http://projects.jga.me/jquery-builder/">Custom build: http://projects.jga.me/jquery-builder/</a></li>
+                </ul>
+                <div>
+                  <br>
+                </div>
+              </div>
+            </section>
+            <section>
+              <h3>When $ is ready?</h3> 
+              <ul>
+                <li class='fragment'>document.ready</li>
+                <li class='fragment'>function <pre><code data-trim contenteditable style="word-wrap: break-word">$(function() {});</code></pre></li>
+                <li class='fragment'>everywhere if we’re plugging it in on the bottom</li>
+               
+
+              </ul> 
+            </section>
+
+            <section>
+              <h1>Traversing DOM</h1> 
+            </section>
+
+            <section>
+              <h3>Selectors</h3> 
+              <ul class="plain-list small-list">
+                <li>Select all elements:<pre><code>$( "*" )</code></pre></li>
+                <li>CSS selectors, like '.' and "#": <pre><code>$(".my_class")</code></pre></li>
+                <li>Attributes contains selector or word selector:<pre><code style="width: 120%">
+&ltinput name="milk man">
+&ltinput name="milkman">
+
+&ltscript>
+//selector
+$( "input[name*='man']" ).val( "has man in it!" );
+&lt/script>
+
+&ltscript>
+//word selector
+$( "input[name~='man']" ).val( "mr. man is in it!" );
+&lt/script>
+                </code></pre>
+                </li>
+              </ul>
+            </section>
+            <section>
+              <h3>More attribute-based selectors:</h3>
+              <ul class="small-list">
+                <li>Attribute Ends With Selector [name$="value"]</li>  
+                <li>Attribute Equals Selector [name="value"]</li> 
+                <li>Attribute Contains Prefix Selector [name|="value"]</li> 
+                <li>Attribute Not Equal Selector [name!="value"]</li> 
+                <li>Has Attribute Selector [name]</li> 
+                <li>Multiple Attribute Selector [name="value"][name2="value2"]</li> 
+              </ul>  
+            </section>
+
+            <section>
+              <h1>Hierarchy selectors</h1>
+            </section>
+            <section>
+              <h3>Child Selector (“parent > child”)</h3>
+                              <pre><code style="width: 120%">
+<ul class="topnav">
+  <li>Item 1</li>
+  <li>Item 2
+    <ul>
+    <li>Nested item 1</li>
+    <li>Nested item 2</li>
+    <li>Nested item 3</li>
+    </ul>
+  </li>
+  <li>Item 3</li>
+</ul>
+ 
+<script>
+$( "ul.topnav > li" ).css( "border", "3px double red" );
+</script>
+                </code></pre>   
+            </section>
+
+                
+         
+            <section>
+              <h3>Descendant Selector (“ancestor descendant”)</h3> 
+<pre><code style="width: 130%">
+<form>
+  <label for="name">Child of form:</label>
+  <input name="name" id="name">
+ 
+  <fieldset>
+    <label for="newsletter">Grandchild of form, child of fieldset:</label>
+    <input name="newsletter" id="newsletter">
+  </fieldset>
+</form>
+Sibling to form: <input name="none">
+ 
+<script>
+$( "form input" ).css( "border", "2px dotted blue" );
+$( "form fieldset input" ).css( "backgroundColor", "yellow" );
+</script> 
+</code></pre>   
+            </section>
+
+            <section>
+              <h3>Next Adjacent Selector (“prev + next”)</h3> 
+<pre><code style="width: 100%">
+<form>
+  <label for="name">Name:</label>
+  <input name="name" id="name">
+  <fieldset>
+    <label for="newsletter">Newsletter:</label>
+    <input name="newsletter" id="newsletter">
+  </fieldset>
+</form>
+<input name="none">
+ 
+<script>
+$( "label + input" ).css( "color", "blue" ).val( "Labeled!" );
+</script>
+</code></pre>
+
+            </section>
+
+            <section>
+              <h3>Next Siblings Selector (“prev ~ siblings”)</h3>  
+<pre><code style="width: 120%">
+<div>div (doesn't match since before #prev)</div>
+<span id="prev">span#prev</span>
+<div>div sibling</div>
+<div>div sibling <div id="small">div niece</div></div>
+<span>span sibling (not div)</span>
+<div>div sibling</div>
+ 
+<script>
+$( "#prev ~ div" ).css( "border", "3px groove blue" );
+</script> 
+</code></pre>   
+            </section>
+
+            <section>
+              <h3>Extension for CSS selectors</h3>
+<pre><code class="javascript" style="width: 100%">
+  $( "div:animated" )
+  $( ":button" )
+  $( ":checkbox" )
+  $( "td:eq( 2 )" ) //Select the element at index n within the matched set.
+  $( ":even" )
+  $( ":file" )
+  $( ":first" )
+  
+  //Select all elements at an index 
+  //greater than index within the matched set.
+  $( "td:gt(4)" ) 
+
+  $( "div:has(p)" )
+  $( ":header" )
+  $( ":hidden" )
+  $( ":image" )
+</code></pre>
+                
+            </section>
+
+                        <section>
+              <h3>Extension for CSS selectors (continued)</h3>
+<pre><code class="javascript" style="width: 100%">
+  $( ":input" )
+  $( "tr:last" )
+
+  //Select all elements at an index less than index within the matched set.
+  $( "td:lt(4)" ) 
+
+  $( ":odd" )
+
+  // Select all elements that have 
+  //at least one child node (either an element or text).
+  $( "td:parent" ) 
+
+  $( ":password" )
+  $( ":radio" )
+  $( ":reset" )
+  $( "select option:selected" )
+</code></pre>
+                
+            </section>
+
+            <section>
+              <h3>Extension for CSS selectors: the end is near!</h3>
+<pre><code class="javascript">
+  $( ":submit" )
+  $( ":text" )
+  $( ":visible" )
+  $( ":checked" )
+  $( ":disabled" )
+  $( ":enabled" )
+  $( ":focused" )
+
+</code></pre>
+
+... learn more: <a href="http://api.jquery.com/category/selectors/">http://api.jquery.com/category/selectors/</a>
+                
+            </section>
+
+            <section>
+              <h1>Traversing</h1> 
+              <p>Once you've made an initial selection with jQuery, you can traverse deeper into what was just selected.</p> 
+            </section>
+
+            <section>
+              <h3>Parents</h3> 
+              <pre><code class="html">
+<div class="grandparent">
+    <div class="parent">
+        <div class="child">
+            <span class="subchild"></span>
+        </div>
+    </div>
+    <div class="surrogateParent1"></div>
+    <div class="surrogateParent2"></div>
+</div>
+</code></pre> 
+<pre><code class="javascript"> 
+// returns [ div.child ]
+$( "span.subchild" ).parent(); 
+// returns [ div.parent ]
+$( "span.subchild" ).parents( "div.parent" ); 
+// returns [ div.child, div.parent, div.grandparent ]
+$( "span.subchild" ).parents(); 
+// returns [ div.child, div.parent ]
+$( "span.subchild" ).parentsUntil( "div.grandparent" ); 
+// returns [ div.child ]
+$( "span.subchild" ).closest( "div" ); 
+// returns [ div.child ] as the selector is also included in the search:
+$( "div.child" ).closest( "div" );</code></pre>
+            </section>
+
+            <section>
+              <h3>Children</h3>
+
+<pre><code class="html">
+<div class="grandparent">
+    <div class="parent">
+        <div class="child">
+            <span class="subchild"></span>
+        </div>
+    </div>
+    <div class="surrogateParent1"></div>
+    <div class="surrogateParent2"></div>
+</div>
+</code></pre> 
+              <pre><code class="javascript">
+                
+// Selecting an element's direct children:
+ 
+// returns [ div.parent, div.surrogateParent1, div.surrogateParent2 ]
+$( "div.grandparent" ).children( "div" );
+ 
+// Finding all elements within a selection that match the selector:
+ 
+// returns [ div.child, div.parent, div.surrogateParent1, div.surrogateParent2 ]
+$( "div.grandparent" ).find( "div" );
+              </code></pre> 
+            </section>
+
+            <section>
+            <h3>Siblings</h3>
+<pre><code class="html">
+<div class="grandparent">
+    <div class="parent">
+        <div class="child">
+            <span class="subchild"></span>
+        </div>
+    </div>
+    <div class="surrogateParent1"></div>
+    <div class="surrogateParent2"></div>
+</div>
+</code></pre> 
+<pre><code class="javascript">
+
+// Selecting an element's siblings in both 
+//directions that matches the given selector:
+ 
+// returns [ div.surrogateParent1, div.surrogateParent2 ]
+$( "div.parent" ).siblings();
+ 
+// returns [ div.parent, div.surrogateParent2 ]
+$( "div.surrogateParent1" ).siblings();
+</code></pre> 
+              
+            </section>
+
+            <section>
+              <h3>Siblings (continued)</h3> 
+              <pre><code style="javascript">
+// Selecting a next sibling of the selectors:
+ // returns [ div.surrogateParent1 ]
+$( "div.parent" ).next();
+ 
+// Selecting a prev sibling of the selectors:
+ // returns [] as No sibling exists before div.parent
+$( "div.parent" ).prev();
+ 
+// Selecting all the next siblings of the selector:
+ // returns [ div.surrogateParent1, div.surrogateParent2 ]
+$( "div.parent" ).nextAll();
+ 
+// returns [ div.surrogateParent1 ]
+$( "div.parent" ).nextAll().first();
+ 
+// returns [ div.surrogateParent2 ]
+$( "div.parent" ).nextAll().last();
+ 
+// Selecting all the previous siblings of the selector:
+ // returns [ div.surrogateParent1, div.parent ]
+$( "div.surrogateParent2" ).prevAll();
+ 
+// returns [ div.surrogateParent1 ]
+$( "div.surrogateParent2" ).prevAll().first();
+ 
+// returns [ div.parent ]
+$( "div.surrogateParent2" ).prevAll().last();
+              </code></pre>
+            </section>
+
+            <section>
+            <h3>Chaining</h3>
+              <pre><code style="javascript">
+                
+// No chaining
+$("#menu").fadeIn("fast");
+$("#menu").addClass(".active");
+$("#menu").css("marginRight", "10px");
+
+// vs. with chaining
+$("#menu").fadeIn("fast")
+   .addClass("active")
+   .css("marginRight", "10px");
+              </code></pre>  
+              <p>Why: Almost all jQuery methods return a jQuery object. </p>
+            </section>
+
+            <section>
+              <h3>Toggle</h3>
+  <pre><code class="html">             
+<p class="blue">Click to toggle</p>
+<p class="blue highlight">highlight</p>
+<p class="blue">on these</p>
+<p class="blue">paragraphs</p>
+
+<script>
+$( "p" ).click(function() {
+  $( this ).toggleClass( "highlight" );
+});
+</script>
+ </code></pre> 
+              <p>Learn more: <a href="http://api.jquery.com/toggleClass/">http://api.jquery.com/toggleClass/</a></p>  
+            </section>
+
+            <section>
+              <h3>Changing element attributes with attr</h3>
+              <pre><code class="javascript">
+$("button").click(function(){
+  $("img").attr("width","500");
+});     
+              </pre></code>
+              <p> Come and try: <a href="http://jsbin.com/EbOtuVu/1/edit">http://jsbin.com/EbOtuVu/1/edit</a></p> 
+            </section>
+
+            <section>
+              <h3>Data-attributes</h3>
+              <p>NOT to be confused with data-storage!
+              jQuery introduced support for data attributes in version 1.4.3, which was released in October 2010.</p>
+<pre><code class="html">
+  <div data-role="page" data-last-value="43" data-hidden="true" data-options='{"name":"John"}'></div>
+  <div data-foobar='{"foo":"bar"}'></div>
+</code></pre>
+<pre><code class="javascript">
+$( "div" ).data( "role" ) === "page";
+$( "div" ).data( "lastValue" ) === 43;
+$( "div" ).data( "hidden" ) === true;
+$( "div" ).data( "options" ).name === "John";
+
+var baz = $('div').data('foobar').foo; //you can use JSON syntax, wee!
+
+</code></pre>
+
+            </section>
+
+            <section>
+              <h3>Getting styles with .css</h3>
+  <pre><code class="css">
+#box1 {
+    width: 50px;
+    color: yellow;
+    background-color: blue;
+  }
+</code></pre>
+  <pre><code class="javascript">
+<div class="blue" style="background-color:blue;"></div>
+<div id="box1">1</div>
+<script>
+ //you can get the current value or get the array of current values
+  $(".blue").css( "background-color" );
+  //returns rgb(0, 0, 255).
+  var styleProps = $("#box1").css([
+    "width", "height", "color", "background-color"
+  ]);
+
+  $.each( styleProps, function( prop, value ) {
+    //do something
+  });
+</script>
+
+</code></pre>            
+              
+            </section>
+
+            <section>
+              <h3>Modifying styles</h3>
+<pre><code class="javascript">
+ 
+<p>Just roll the mouse over me.</p>
+
+<p>Or me to see a color change.</p>
+ 
+<script>
+$( "p" ).on( "mouseover", function() {
+  $( this ).css( "color", "red" );
+});
+</script>
+</code></pre> 
+
+            </section>
+
+            <section>
+              <h1>Form goodies</h>
+            
+            </section>
+
+            <section>
+              <h3>Getting values</h3>
+              <pre><code class="javascript">
+// Get the value from a dropdown select
+$( "select.foo option:selected").val();
+ 
+// Get the value from a dropdown select even easier
+$( "select.foo" ).val();
+ 
+// Get the value from a checked checkbox
+$( "input:checkbox:checked" ).val();
+ 
+// Get the value from a set of radio buttons
+$( "input:radio[name=bar]:checked" ).val();
+
+              </code></pre>
+              <p><a href="http://jsbin.com/AmESuFOj/1/edit">Try it yourself: http://jsbin.com/AmESuFOj/1/edit</a></p>
+            </section>
+
+            <section>
+              <h3>.serialize</h3>
+              <p>The .serialize() method creates a text string in standard URL-encoded notation.</p>
+              <pre><code class="html">
+<form action="">
+First name: <input type="text" name="FirstName" value="Mickey" /><br>
+Last name: <input type="text" name="LastName" value="Mouse" /><br>
+</form>             
+</code></pre>
+<pre><code class="javascript">
+$("form").serialize(); //returns FirstName=Mickey&LastName=Mouse
+$("form").serializeArray(); //returns an array
+</code></pre>
+             <p><a href="http://jsbin.com/UhuNOHoS/1/edit">Try it yourself: http://jsbin.com/UhuNOHoS/1/edit</a></p>
+            </section>
+              
+            <section>
+              <h3>html() methods</h3>
+              Returns the html contents <pre><code>$("p").html()</code></pre> 
+              Replaces the html contents
+<pre><code class="html">    
+<div class="demo-container">
+  <div class="demo-box">Demonstration Box</div>
+</div>
+</code></pre> 
+<pre><code class="javascript">
+$( "div.demo-container" )
+  .html( "<p>All new content. <em>You bet!</em></p>" );
+
+  //or
+
+  $( "div.demo-container" ).html(function() {
+  var emphasis = "<em>" + $( "p" ).length + " paragraphs!</em>";
+  return "<p>All new content for " + emphasis + "</p>";
+});
+</code></pre> 
+<pre><code class="html"> 
+<div class="demo-container">
+  <p>All new content. <em>You bet!</em></p>
+</div>
+</code></pre>          
+            </section>
+
+            <section>
+              <h3>.text() methods</h3> 
+              <p>Same as .html but for plain text.</p> 
+            </section>
+
+            <section>
+              <h3 width="100%">.wrap() elements around</h3> 
+              Wrap a &ltdiv> element around each &ltp> element:  
+<pre><code class="javascript">
+$("button").click(function(){
+  $("p").wrap("<div></div>");
+});
+
+$("p").wrap(function(){
+      return "<div></div>"
+});
+</code></pre>
+            </section>
+
+            <section>
+              <h1>Events</h1>  
+            </section>
+
+            <section>
+              <h3>DOM Events level 0</h3>
+              <p>This event handling model was introduced by Netscape Navigator, and remains the most cross-browser model</p>  
+            </section>
+
+            <section>
+              <h3>Inline events</h3>
+              <p>In the inline model,event handlers are added as attributes of elements.</p>
+<pre><code class="html">
+<h1>Inline Event Handling</h1>
+
+<p>Hey <a href="http://www.example.com" 
+  onclick="triggerAlert('Joe'); 
+      return false;">Joe</a>!</p>
+</code></pre> 
+<pre><code class="javascript">
+function triggerAlert(name) {
+        window.alert("Hey " + name);
+}
+</code></pre>                  
+            </section>
+
+            <section>
+              <h3>Traditional events</h3>
+<pre><code class="html">
+<h1>Traditional Event Handling</h1>
+ 
+<p>Hey Johny!</p>
+</code></pre> 
+<pre><code class="javascript">
+var triggerAlert = function () {
+        window.alert("Hey Johny");
+};
+
+// Assign an event handler
+document.onclick = triggerAlert;
+
+// Assign another event handler
+window.onload = triggerAlert;
+
+// Remove the event handler that was just assigned
+window.onload = null;
+</code></pre>  
+            </section>
+
+            <section>
+              <h3>DOM level 2 event model</h3>
+              <p>A more flexible one.</p>  
+              <ul>
+                <li>addEventListener: Allows the registration of event listeners on the event target.</li>
+                <li>removeEventListener: Allows the removal of event listeners from the event target.</li>
+                <li>dispatchEvent: Allows sending the event to the subscribed event listeners.</li>
+                <li>stopPropagation: To prevent an event from bubbling, developers must call the this method of the event object</li>
+                <li>preventDefault: To prevent the default action of the event to be called, developers must call the this method of the event object.</li>
+              </ul>
+            </section>
+      
+            <section>
+              <h3>Example of DOM level 2 events</h3>
+<pre><code class="html">
+<h1>DOM Level 2</h1>
+<p>Hey Joe!</p>
+</code></pre> 
+<pre><code class="javascript">
+var heyJoe = function () {
+     window.alert("Hey Joe!");
+}
+
+// Add an event handler
+document.addEventListener( "click", heyJoe, true );  // capture phase
+
+// Add another event handler
+window.addEventListener( "load", heyJoe, false );  // bubbling phase
+
+// Remove the event handler just added
+window.removeEventListener( "load", heyJoe, false );
+</code></pre>                  
+            </section>
+
+            <section>
+              <h3>MS IE event model</h3>
+              <p>Pre-IE8 (Removed in IE11). IE9 supports W3C events. Trident-based browsers (Maxthon) support this model as well.</p>  
+              <ul class="small-list">
+                <li>attachEvent: Similar to W3C's addEventListener method.</li>
+                <li>detachEvent: Similar to W3C's removeEventListener method.</li>
+                <li>fireEvent: Similar to W3C's dispatchEvent method.</li>
+                <li>To prevent an event bubbling, developers must set the event's cancelBubble property.</li>
+                <li>To prevent the default action of the event to be called, developers must set the event's "returnValue" property.</li>
+                <li>The this keyword refers to the global window object.</li>
+              </ul>
+            </section>
+      
+            <section>
+              <h3>Example of MS IE event model</h3>
+<pre><code class="html">
+<h1>Microsoft-specific model</h1>
+<p>Hey Joe!</p>
+</code></pre> 
+<pre><code class="javascript">
+var heyJoe = function () {
+     window.alert("Hey Joe!");
+}
+
+// Add an event handler
+document.attachEvent("onclick", heyJoe);
+
+// Add another event handler
+window.attachEvent("onload", heyJoe);
+
+// Remove the event handler just added
+window.detachEvent("onload", heyJoe);
+</code></pre>                  
+            </section>
+
+            <section>
+              <h1>Events in jQuery</h1>  
+            </section>
+
+            <section>
+              <h3>.bind()</h3>  
+              <p>Attach a handler to an event for the elements.</p>
+              <p>.bind( eventType [, eventData ], handler(eventObject) )</p>
+<pre><code class="javascript">
+$( "#foo" ).bind( "click", function() {
+  alert( "User clicked on 'foo.'" );
+});
+
+//Multiple event types can be bound at once by including each one separated by a space:
+$( "#foo" ).bind( "mouseenter mouseleave", function() {
+  $( this ).toggleClass( "entered" );
+});
+</code></pre>  
+            </section>
+
+            <section>
+              <h3>Event object</h3>  
+              <p>The handler callback can take parameters</p>
+<pre><code class="javascript">
+$( "#foo" ).bind( "click", function( event ) {
+    alert( "The mouse cursor is at (" +
+      event.pageX + ", " + event.pageY +
+      ")" );
+  });
+</code></pre>       
+              <p>Returning false from a handler is equivalent to calling both .preventDefault() and .stopPropagation() on the event object.</p>         
+            </section>
+
+            <section>
+             <h3>.live</h3>
+             <p><strike> Same as .bind, but works for elements created after the page has been loaded</strike></p> 
+             <h3>DEPRECATED!</h3>
+            </section>
+
+            <section>
+              <h2>Reading</h2>
+              <ul>
+                <li><a href="http://www.google.com/url?q=http%3A%2F%2Frutracker.org%2Fforum%2Fviewtopic.php%3Ft%3D4212327&sa=D&sntz=1&usg=AFQjCNHo6QFvouXzA9J9EV2Kf0Z2NCfJHg">Bear Bibeault and Yehuda Katz - jQuery in Action</a></li>
+                <li><a href="http://api.jquery.com/">http://api.jquery.com/</a></li>
+                <li><a href="http://learn.jquery.com/">http://learn.jquery.com/</a></li>
+                <li><a href="http://robflaherty.github.io/jquery-annotated-source/">jQuery annotated source</a></li>
+                <li><a href="http://www.codeschool.com/courses/try-jquery">Try jQuery</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events">Event reference</a></li>
+                <li><a href="http://flippinawesome.org/2013/05/06/5-things-you-should-stop-doing-with-jquery/">5 things you should stop doing with jQuery</a></li>
+              </ul>
+            </section>
+
+
+            <section>
+              <h1>The End</h1>
+            </section>
+          </div>
+        </div>
+
+
+        <script src="../shared/lib/js/head.min.js"></script>
+        <script src="../shared/js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                { src: '../shared/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: '../shared/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: '../shared/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: '../shared/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                { src: '../shared/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+              });
+
+</script>
+</body>
+</html>
+
