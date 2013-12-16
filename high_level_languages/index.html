@@ -98,10 +98,11 @@ linkify = (selector) ->
             <li>via <a href="http://coffeescript.org/">online sandbox</a> </li>
             <li class="fragment">in your browser <a href="https://chrome.google.com/webstore/detail/coffeeconsole/ladbkfdlnaibelfidknofapbbdlhadfp?hl=en">coffee console</a></li>
             <li class="fragment">in your REPL console (<a href="https://npmjs.org/package/coffee-script">coffee</a> -i)</li>
-            <li class="fragment">letting serverside handle this (<a href="https://github.com/sstephenson/sprockets">Sprocket</a>, <a href="gruntjs.com">Grunt</a>, <a href="https://npmjs.org/package/coffee-script">coffee</a>)</li>
+            <li class="fragment">letting serverside handle this (<a href="https://github.com/sstephenson/sprockets">Sprocket</a>, <a href="https://github.com/gruntjs/grunt-contrib-coffee">Grunt</a>, <a href="https://npmjs.org/package/coffee-script">coffee</a>)</li>
             <li class="fragment">using some GUI/browser extension (<a href="http://alphapixels.com/prepros/">Prepros</a>, <a href="http://koala-app.com/">Koala</a>)</li>
-            <li class="fragment">using "text/coffeescript" Script Tags (with this <a href="http://coffeescript.org/extras/coffee-script.js">lib</a></li>
+            <li class="fragment">using "text/coffeescript" Script Tags (with this <a href="http://coffeescript.org/extras/coffee-script.js">lib</a>)</li>
           </ul>
+          <a class="fragment" href="http://blog.paracode.com/2012/02/15/build-mgmt-javascript-coffeescript/">Related reading</a>
         </section>
         <section class="stack">
           <section>
@@ -362,7 +363,7 @@ range[45 .. -48] # => [46, 47, 48, "Nothing here", 49, 50, 51, 52, 53]
 Transpiled to:
 [].splice.apply(range, [48, (-48) - 48 + 1]
   .concat('Nothing here')), 'Nothing here';
-Arguments for apply are [48, -95, "Nothing here"]
+Arguments applied to slice are [48, -95, "Nothing here"]
 ###
   </code></pre>
 
@@ -403,7 +404,7 @@ else
 console.log "condition wasn't met" unless conditon
 </code></pre>
 <pre class='fragment'><code contenteditable data-trim>
-# not good
+# can be puzzling, better to avoid
 unless something
   doNothing()
 else
@@ -442,7 +443,7 @@ be a sample of interpolation
           </section>
           <section>
             <h1>Loops</h1>
-<pre><code>
+<pre><code data-trim contenteditable>
 console.log x * 2 for x in [1..10] # => 2, 4, 6,..., 20
 items = ["Hat", "Man", "Panama"]
 for item, index in items
@@ -453,7 +454,7 @@ Item #1 is Man
 Item #2 is Panama
 ###
 </code></pre>
-<pre class='fragment'><code>
+<pre class='fragment'><code data-trim contenteditable>
 price = -> (100 * Math.random()).toFixed(2)
 sell = (item) -> console.log "selling #{item} for #{ price() }$"
 sell item for item in items when item isnt 'Man'
@@ -466,7 +467,7 @@ selling Panama for 3.08$
           </section>
           <section>
             <h2>Looping through object's properties</h2>
-<pre><code>
+<pre><code data-trim contenteditable>
 obj = new Object()
 obj.x = 3
 Object::z = 2
@@ -483,7 +484,7 @@ for own key, value of obj
               <li class='fragment'><span class="inline-code">::</span> = <span class="inline-code">prototype</span></li>
               <li class='fragment'><span class="inline-code">?</span> = check for undefined/null</li>
             </ul>
-<pre class='fragment'><code data-trim>
+<pre class='fragment'><code data-trim contenteditable>
 @someObj::exist = (key) ->
   @someObj[key]?
 </code></pre>
@@ -554,7 +555,7 @@ return item.name})
 result = (item.name for item in items)
             </code></pre>
             </li>
-            <li>ES5's select ~ for .. when</li>
+            <li>ES5's filter ~ for .. when</li>
             <li><span class="inline-code">(xs.indexOf(y) != -1)</span> ~ <span class="inline-code">y in xs</span></li>
             <li><span class="inline-code">and, or, or=, ?=</span></li>
             <li>Destructive assignment <span class="inline-code">[a, b] = [1, 2]</span>, 
@@ -565,14 +566,38 @@ result = (item.name for item in items)
           </ul>
         </section>
         <section>
+          <a href="http://ricardo.cc/2011/06/02/10-CoffeeScript-One-Liners-to-Impress-Your-Friends.html">10-CoffeeScript-One-Liners-to-Impress-Your-Friends</a>
+          <a href="http://dev.hubspot.com/blog/coffeescript-tricks">CoffeeScript Tricks</a>
+        </section>
+        <section>
           <h1>Source maps</h1>
         </section>
+        <section>
+          <h1>Fun time</h1>
+          <p class="text-left">Create a Utils module, that would pass the specs. Class Logger with public method log and with padding/format, maybe some sort of interface for method. </p>
+
+        </section>
+        <!-- Typescript is hidden, for time being
         <section>
           <h1>TypeScript</h1>
           <p>Check out
            <a href="http://www.syncfusion.com/resources/techportal/ebooks/typescript">TypeScript Succinctly</a> by Steve Fento <br/> or <br/>
            <a href="http://www.amazon.com/TypeScript-Revealed-Dan-Maharry/dp/1430257253">TypeScript Revealed</a> by Dan Maharry
           </p>
+        </section>
+        <section>
+           <h2>How to run program written in typescript?</h2>
+          <ul class="plain-list">
+            <li>via <a href="http://www.typescriptlang.org/Playground/">online sandbox</a></li>
+
+            <li class="fragment">in your browser using <a href="https://github.com/choudeshell/TypeScript-Console">typescript console</a> ~ not sure, how good it is.</li>
+            <li class="fragment">in console REPL <a href="https://npmjs.org/package/tsi">using `tsi` package</a> or some fancy <a href="http://mnajder.blogspot.com/2012/10/typescript-interactive-in-visual-studio.html">VS REPL</a></li>
+            <li class="fragment">letting serverside handle this (<a href="https://github.com/antage/sprockets-typescript">Sprocket</a>, <a href="https://github.com/k-maru/grunt-typescript">Grunt</a>, <a href="https://https://npmjs.org/package/typescript">typescript</a>)</li>
+            <li class="fragment">usning some GUI/browser extension (<a href="http://www.microsoft.com/en-us/download/details.aspx?id=34790">Visual Studio</a>,<a href="http://www.jetbrains.com/idea/webhelp/transpiling-typescript-to-javascript.html">Jetbrains' IDE</a>)</li>
+            <li class="fragment">using "text/typescript" Script Tags (with this <a href="https://github.com/niutech/typescript-compile">lib</a>)</li>
+          </ul>
+        </section>
+        <section>
         </section>
         <section>
           <h2>Intergalactic Interconnections</h2>
@@ -582,40 +607,7 @@ result = (item.name for item in items)
           </p>
         </section>
 
-        <section>
-          <section>
-            <h2>Fragmented Views</h2>
-            <p>Hit the next arrow...</p>
-            <p class="fragment">... to step through ...</p>
-            <ol>
-              <li class="fragment"><code>any type</code></li>
-              <li class="fragment"><em>of view</em></li>
-              <li class="fragment"><strong>fragments</strong></li>
-            </ol>
 
-            <aside class="notes">
-              This slide has fragments which are also stepped through in the notes window.
-            </aside>
-          </section>
-          <section>
-            <h2>Fragment Styles</h2>
-            <p>There's a few styles of fragments, like:</p>
-            <p class="fragment grow">grow</p>
-            <p class="fragment shrink">shrink</p>
-            <p class="fragment roll-in">roll-in</p>
-            <p class="fragment fade-out">fade-out</p>
-            <p class="fragment highlight-red">highlight-red</p>
-            <p class="fragment highlight-green">highlight-green</p>
-            <p class="fragment highlight-blue">highlight-blue</p>
-          </section>
-        </section>
-
-        <section>
-          <h2>Spectacular image!</h2>
-          <a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-            <img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-          </a>
-        </section>
         <section>
           <h2>Stellar Links</h2>
           <ul>
@@ -624,7 +616,7 @@ result = (item.name for item in items)
             <li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
           </ul>
         </section>
-
+         -->
       </div>
 
     </div>
