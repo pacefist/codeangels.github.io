@@ -18,6 +18,9 @@ theme: sudodoki/reveal-cleaver-theme
 
 --
 
+##![NPM](npm.png)
+--
+
 ## [NPM](https://npmjs.org/)
 
 + Written by Isaac Z. Schlueter
@@ -134,6 +137,9 @@ Use with version set to * in package.json to overwrite it with latest stable.
 
 # Bump versions
 `npm version X.Y.Z` - will commit tag for you (in case of git presence) and update package.json.
+--
+
+##![Bower](bower-logo.png)
 --
 
 ## [Bower](http://bower.io/)
